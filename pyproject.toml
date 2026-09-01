@@ -1,0 +1,20 @@
+[project]
+name = "kdag-dataforge"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Koustav Manna", email = "koustaviitjee@gmail.com" },
+    { name = "Upayan Gupta", email = "upayangupta325@kgpian.iitkgp.ac.in" },
+    { name = "Deep Pandey", email = "deeppandey25@kgpian.iitkgp.ac.in" },
+    { name = "Tanishq Adhikari", email = "tanishqadhikari202225@kgpian.iitkgp.ac.in" }
+]
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+kdag-dataforge = "kdag_dataforge:main"
+
+[build-system]
+requires = ["uv_build>=0.12.3,<0.13.0"]
+build-backend = "uv_build"
