@@ -1,7 +1,7 @@
 [project]
-name = "kdag-dataforge"
+name = "bdh-surgery"
 version = "0.1.0"
-description = "Add your description here"
+description = "Train, merge, and export the toy BDH-GPU model pair for the DataForge model-surgery explainer"
 readme = "README.md"
 authors = [
     { name = "Koustav Manna", email = "koustaviitjee@gmail.com" },
@@ -10,10 +10,18 @@ authors = [
     { name = "Tanishq Adhikari", email = "tanishqadhikari202225@kgpian.iitkgp.ac.in" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "torch",
+    "numpy",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+]
 
 [project.scripts]
-kdag-dataforge = "kdag_dataforge:main"
+bdh-surgery = "bdh_surgery:main"
 
 [build-system]
 requires = ["uv_build>=0.12.3,<0.13.0"]

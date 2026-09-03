@@ -14,3 +14,6 @@ wheels/
 
 !.env.example
 !.env.template
+
+# Node (web/, if a bundler is added later)
+node_modules/
