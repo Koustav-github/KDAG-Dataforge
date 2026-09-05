@@ -1,7 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { loadModel, forward } from './bdh_forward.js';
-  import { manifest, theta, mergeMode, ablated, parentA, parentB, mergedModel, narrativeStep } from './lib/store.js';
+  import { manifest, dataset, theta, mergeMode, ablated, parentA, parentB, mergedModel, narrativeStep } from './lib/store.js';
   import OutputPanels from './lib/OutputPanels.svelte';
   import PhaseDiagram from './lib/PhaseDiagram.svelte';
   import Surgery from './lib/Surgery.svelte';
@@ -9,7 +9,7 @@
   import Derivation from './lib/Derivation.svelte';
   import FusionStrip from './lib/FusionStrip.svelte';
   import HonestyBadge from './lib/HonestyBadge.svelte';
-  import { buildLexicon, labelSequence, splitProbe } from './lib/tokens.js';
+  import { buildLexicon, labelSequence, splitProbe, layoutFor } from './lib/tokens.js';
   import { greedyDecode } from './lib/generate.js';
   import { measureDamageAsync, cachedDamage, damageKey } from './lib/compute.js';
 
@@ -34,6 +34,9 @@
       .then((r) => r.arrayBuffer())
       .then((buf) => (kind === 'int8' ? new Int8Array(buf) : new Float32Array(buf)));
 
+  let probesAllDatasets = null;
+  let sweepAllDatasets = null;
+
   onMount(async () => {
     try {
       const [m, p, s] = await Promise.all([
@@ -42,9 +45,12 @@
         fetch(`${DATA}/sweep.json`).then((r) => r.json()),
       ]);
       manifest.set(m);
-      probes = p;
-      sweep = s;
-      const featuredKeys = Object.keys(m.featured);
+      probesAllDatasets = p.datasets;
+      sweepAllDatasets = s.datasets;
+      const datasetIds = Object.keys(m.datasets);
+      dataset.set(datasetIds.includes('baseline') ? 'baseline' : datasetIds[0]);
+
+      const featuredKeys = Object.keys(m.datasets[$dataset].featured);
       const defaultKey = featuredKeys.includes('0.5') ? '0.5' : featuredKeys[0];
       theta.set(defaultKey);
       sweepTheta = parseFloat(defaultKey);
@@ -53,43 +59,76 @@
     }
   });
 
+  // The manifest fragment for the dataset on screen — same {config, featured}
+  // shape loadModel already expects, so passing THIS instead of the whole
+  // manifest is the entire change needed to make loadModel dataset-aware.
+  $: curDataset = $manifest && $manifest.datasets[$dataset] ? $manifest.datasets[$dataset] : null;
+  $: curSweep = sweepAllDatasets ? sweepAllDatasets[$dataset] : null;
+  $: probes = probesAllDatasets ? probesAllDatasets[$dataset] : null;
+  // kept for the parts of the template that still say `sweep` — one dataset's
+  // slice, never the whole file.
+  $: sweep = curSweep;
+
+  // Datasets differ in n_concepts (and sometimes vocab_size), so switching one
+  // is a full reload — new parents, a fresh collision analysis, everything
+  // downstream recomputes. θ itself is left alone: all three datasets export
+  // the same 11 θ keys, so staying on "0.5" across a dataset switch is what
+  // lets a learner compare the same θ under two different vocabularies.
+  const datasetOptions = () =>
+    $manifest ? Object.entries($manifest.datasets).map(([id, d]) => ({ id, label: d.label, blurb: d.blurb })) : [];
+
+  function selectDataset(id) {
+    if (id === $dataset) return;
+    ablated.set([]);
+    outputs = null;
+    sharedDamage = null;
+    dataset.set(id);
+  }
+
   // All 11 θ ship weights now, so a slider drag can ask for many of them in a
-  // second. Cache by θ so each is fetched and dequantized exactly once.
+  // second. Cache by (dataset, θ, side) so each is fetched and dequantized
+  // exactly once — and so the SAME θ string in two different datasets is
+  // never confused for the same model.
   const modelCache = new Map();
 
-  async function loadSide(m, th, side) {
-    const key = `${th}|${side}`;
+  async function loadSide(m, ds, th, side) {
+    const key = `${ds}|${th}|${side}`;
     if (!modelCache.has(key)) modelCache.set(key, loadModel(m, th, side, fetchBin));
     return modelCache.get(key);
   }
 
-  async function loadParents(m, th) {
+  async function loadParents(m, ds, th) {
     const myToken = ++reqToken;
-    const [a, b] = await Promise.all([loadSide(m, th, 'A'), loadSide(m, th, 'B')]);
-    if (myToken !== reqToken) return; // superseded by a later θ change
+    const [a, b] = await Promise.all([loadSide(m, ds, th, 'A'), loadSide(m, ds, th, 'B')]);
+    if (myToken !== reqToken) return; // superseded by a later θ/dataset change
     parentA.set(a);
     parentB.set(b);
   }
 
-  $: if ($manifest && $theta) loadParents($manifest, $theta);
+  $: if (curDataset && $dataset && $theta) loadParents(curDataset, $dataset, $theta);
 
   function regenerate() {
-    const featured = $manifest.featured[$theta];
+    const featured = curDataset.featured[$theta];
     const lexicon = buildLexicon(featured);
+    // large_vocab's specials (BOS/SEP/EOS) live at different ids than the
+    // 24-concept datasets' — everything below has to use THIS dataset's
+    // layout, or splitProbe silently finds no SEP/EOS and greedyDecode never
+    // stops early.
+    const layout = layoutFor(nConcepts);
     const probeSeq = curProbes.eval_a[0];
-    const { prompt, target } = splitProbe(probeSeq);
+    const { prompt, target } = splitProbe(probeSeq, layout);
     const maxNew = target.length || 4;
 
-    const contA = greedyDecode($parentA, prompt, maxNew);
-    const contB = greedyDecode($parentB, prompt, maxNew);
+    const contA = greedyDecode($parentA, prompt, maxNew, { eos: layout.eos });
+    const contB = greedyDecode($parentB, prompt, maxNew, { eos: layout.eos });
     const mergedAblated = $ablated.length ? $ablated : null;
-    const contM = greedyDecode($mergedModel, prompt, maxNew, { ablated: mergedAblated });
+    const contM = greedyDecode($mergedModel, prompt, maxNew, { ablated: mergedAblated, eos: layout.eos });
 
     outputs = {
-      a: { prompt: labelSequence(prompt, lexicon), continuation: labelSequence(contA, lexicon) },
-      b: { prompt: labelSequence(prompt, lexicon), continuation: labelSequence(contB, lexicon) },
-      merged: { prompt: labelSequence(prompt, lexicon), continuation: labelSequence(contM, lexicon) },
-      oracle: { prompt: labelSequence(prompt, lexicon), target: labelSequence(target, lexicon) },
+      a: { prompt: labelSequence(prompt, lexicon, layout), continuation: labelSequence(contA, lexicon, layout) },
+      b: { prompt: labelSequence(prompt, lexicon, layout), continuation: labelSequence(contB, lexicon, layout) },
+      merged: { prompt: labelSequence(prompt, lexicon, layout), continuation: labelSequence(contM, lexicon, layout) },
+      oracle: { prompt: labelSequence(prompt, lexicon, layout), target: labelSequence(target, lexicon, layout) },
     };
   }
 
@@ -97,18 +136,19 @@
   // only re-runs a labeled reactive statement when a store is referenced
   // *syntactically* in that statement — omitting it means an ablation change
   // silently fails to refresh the output panels.
-  $: if ($parentA && $parentB && $mergedModel && curProbes && $manifest && $ablated) regenerate();
+  $: if ($parentA && $parentB && $mergedModel && curProbes && curDataset && $ablated) regenerate();
 
-  function matchFeaturedKey(m, val) {
-    for (const k of Object.keys(m.featured)) {
+  function matchFeaturedKey(ds, val) {
+    if (!ds) return null;
+    for (const k of Object.keys(ds.featured)) {
       if (Math.abs(parseFloat(k) - val) < 1e-6) return k;
     }
     return null;
   }
 
-  function findSweepPoint(val) {
-    if (!sweep) return null;
-    const rows = sweep.points.filter((p) => Math.abs(p.theta - val) < 1e-6);
+  function findSweepPoint(sw, val) {
+    if (!sw) return null;
+    const rows = sw.points.filter((p) => Math.abs(p.theta - val) < 1e-6);
     if (!rows.length) return null;
     const mean = (arr) => arr.reduce((s, v) => s + v, 0) / arr.length;
     return {
@@ -120,17 +160,22 @@
     };
   }
 
-  const N_CONCEPTS = 24;
+  // The active dataset's own concept count — 24 for baseline and long_phrase,
+  // 40 for large_vocab. Never hard-coded, so the Venn/label text stays correct
+  // when the learner switches datasets.
+  $: nConcepts = curDataset ? curDataset.n_concepts : 24;
+
   // Shared concept count for the θ on screen — read from the real lexicons
-  // when that θ ships them, else the same round(θ·24) rule build_lexicons uses.
+  // when that θ ships them, else the same round(θ·n_concepts) rule
+  // build_lexicons uses.
   $: sharedConcepts = (() => {
-    if (!$manifest) return null;
-    const key = matchFeaturedKey($manifest, sweepTheta);
+    if (!curDataset) return null;
+    const key = matchFeaturedKey(curDataset, sweepTheta);
     if (key) {
-      const f = $manifest.featured[key];
+      const f = curDataset.featured[key];
       return f.lex_a.filter((t, i) => t === f.lex_b[i]).length;
     }
-    return Math.round(sweepTheta * N_CONCEPTS);
+    return Math.round(sweepTheta * nConcepts);
   })();
 
   // Single entry point for changing θ, so Act 1's slider and Act 3's plot stay
@@ -144,8 +189,8 @@
 
   function selectTheta(val, immediate = false) {
     sweepTheta = val;
-    if (!$manifest) return;
-    const key = matchFeaturedKey($manifest, val);
+    if (!curDataset) return;
+    const key = matchFeaturedKey(curDataset, val);
     if (!key) return;
     clearTimeout(commitTimer);
     if (immediate) { theta.set(key); return; }
@@ -160,12 +205,13 @@
   // then B's; under average the merged n equals a parent's n and there is
   // no split.
   $: splitAt = $mergeMode === 'concat' && $parentA ? $parentA.n : null;
-  // probes.json is keyed by theta: each theta has its own target lexicons, so
-  // scoring a theta=0.5 parent against theta=0.0's corpus would measure nothing.
-  // The sweep slider offers all 11 θ; only 3 ship weights. This is the key for
-  // the θ actually selected — null means "no weights for this one".
-  $: if (sweep) precomputedPoint = findSweepPoint(sweepTheta);
-  $: selectedKey = $manifest ? matchFeaturedKey($manifest, sweepTheta) : null;
+  // probes.json is keyed by (dataset, theta): each theta has its own target
+  // lexicons, so scoring a theta=0.5 parent against theta=0.0's corpus would
+  // measure nothing. All 11 θ ship weights for every dataset now, so
+  // hasWeightsForSelected is nearly always true — it stays as a guard for
+  // whichever θ a future dataset might not cover.
+  $: if (curSweep) precomputedPoint = findSweepPoint(curSweep, sweepTheta);
+  $: selectedKey = curDataset ? matchFeaturedKey(curDataset, sweepTheta) : null;
   $: hasWeightsForSelected = selectedKey !== null;
   $: curProbes = probes && $theta && probes.featured && probes.featured[$theta]
     ? { pivot: probes.pivot, ...probes.featured[$theta] }
@@ -189,6 +235,7 @@
   let damageBusy = false;
 
   $: damageInputs = {
+    ds: $dataset,
     th: $theta,
     mode: $mergeMode,
     a: $parentA,
@@ -200,22 +247,22 @@
   $: recomputeDamage(damageInputs);
 
   async function recomputeDamage(inp) {
-    if (!inp.a || !inp.b || !inp.m || !inp.p || !inp.th) { sharedDamage = null; return; }
-    const key = damageKey(inp.th, inp.mode, null);
+    if (!inp.a || !inp.b || !inp.m || !inp.p || !inp.th || !inp.ds) { sharedDamage = null; return; }
+    const key = damageKey(inp.ds, inp.th, inp.mode, null);
     damageBusy = true;
     try {
       const res = await cachedDamage(key, () =>
         measureDamageAsync(inp.m, inp.a, inp.b,
           inp.p.eval_a.slice(0, LIVE_ROWS), inp.p.eval_b.slice(0, LIVE_ROWS), null));
-      // a newer θ may have landed while we were yielding
-      if (damageKey($theta, $mergeMode, null) === key) sharedDamage = res;
+      // a newer θ/dataset may have landed while we were yielding
+      if (damageKey($dataset, $theta, $mergeMode, null) === key) sharedDamage = res;
     } finally {
       damageBusy = false;
     }
   }
 
   $: livePoint = (() => {
-    if (!sharedDamage || !sweep) return null;
+    if (!sharedDamage || !curSweep) return null;
     const th = $theta ? parseFloat($theta) : sweepTheta;
     const parts = [$mergeMode];
     if ($ablated.length) parts.push(`−${$ablated.length}n`);
@@ -237,12 +284,25 @@
       Two small language models are trained on related but distinct synthetic languages, sharing a slice of
       vocabulary controlled by θ (0 = disjoint, 1 = identical). Fuse them and watch what survives.
     </p>
-    {#if $manifest}
+    {#if curDataset}
       <p class="caps">
-        n per parent: <strong>{$manifest.config.n}</strong>
+        n per parent: <strong>{curDataset.config.n}</strong>
         &nbsp;·&nbsp; merged n: <strong>{$mergedModel ? $mergedModel.n : '—'}</strong>
         &nbsp;·&nbsp; sequence length: <strong>{seqLen ?? '—'}</strong>
+        &nbsp;·&nbsp; vocab size: <strong>{curDataset.config.vocab_size}</strong>
       </p>
+    {/if}
+    {#if $manifest}
+      <div class="dataset-picker" role="group" aria-label="Dataset">
+        {#each datasetOptions() as opt}
+          <button
+            class:active={opt.id === $dataset}
+            aria-pressed={opt.id === $dataset}
+            title={opt.blurb}
+            on:click={() => selectDataset(opt.id)}>{opt.label}</button>
+        {/each}
+      </div>
+      {#if curDataset}<p class="dataset-blurb">{curDataset.blurb}</p>{/if}
     {/if}
   </header>
 
@@ -271,7 +331,7 @@
         <span class="theta-cap">
           θ = {sweepTheta.toFixed(1)}
           <span class="theta-sub">
-            {sharedConcepts === null ? '' : `${sharedConcepts} of ${N_CONCEPTS} concepts shared`}
+            {sharedConcepts === null ? '' : `${sharedConcepts} of ${nConcepts} concepts shared`}
           </span>
         </span>
         <input id="act1-theta" type="range" min="0" max="10" step="1"
@@ -280,7 +340,7 @@
       </label>
       <FusionStrip parentA={$parentA} parentB={$parentB}
         mergeMode={$mergeMode} theta={$theta}
-        shared={sharedConcepts} totalConcepts={N_CONCEPTS}
+        shared={sharedConcepts} totalConcepts={nConcepts}
         damage={sharedDamage} />
     {:else}
       <p class="muted">loading parents…</p>
@@ -324,12 +384,13 @@
       <PhaseDiagram points={sweep.points} yKey="d_mean" marker={sweepTheta}
         bind:xMode={phaseXMode} {livePoint} on:select={onPhaseSelect} />
 
-      {#if $manifest}
+      {#if curDataset}
         <div class="derivation-wrap">
           <Derivation
             theta={$theta ? parseFloat($theta) : sweepTheta}
-            lexA={selectedKey ? $manifest.featured[selectedKey].lex_a : null}
-            lexB={selectedKey ? $manifest.featured[selectedKey].lex_b : null}
+            lexA={selectedKey ? curDataset.featured[selectedKey].lex_a : null}
+            lexB={selectedKey ? curDataset.featured[selectedKey].lex_b : null}
+            nConcepts={nConcepts}
             parentA={$parentA}
             parentB={$parentB}
             merged={$mergedModel}
@@ -376,9 +437,9 @@
 
   <footer class="caps-footer">
     <strong>Toy-scale reimplementation — not an official BDH model.</strong>
-    n = {$manifest ? $manifest.config.n : 1024} per parent, {$mergedModel ? $mergedModel.n : 2048} merged,
-    sequence length {seqLen ?? 16}. Two synthetic languages over a shared pivot, not natural text — see
-    README.md for the full honesty table and known limitations.
+    n = {curDataset ? curDataset.config.n : 1024} per parent, {$mergedModel ? $mergedModel.n : 2048} merged,
+    sequence length {seqLen ?? 16}, dataset "{curDataset ? curDataset.label : '—'}". Two synthetic languages
+    over a shared pivot, not natural text — see README.md for the full honesty table and known limitations.
   </footer>
 </div>
 
@@ -421,6 +482,32 @@
     font-size: 0.78rem;
     color: var(--muted);
     margin: 0;
+  }
+  .dataset-picker {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.6rem;
+  }
+  .dataset-picker button {
+    border: 1px solid var(--border);
+    background: var(--panel-bg);
+    color: var(--fg);
+    border-radius: 999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.78rem;
+    cursor: pointer;
+  }
+  .dataset-picker button.active {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #ffffff;
+  }
+  .dataset-blurb {
+    font-size: 0.76rem;
+    color: var(--muted);
+    margin: 0.3rem 0 0;
+    max-width: 62ch;
   }
   section h2 {
     font-size: 1.05rem;
