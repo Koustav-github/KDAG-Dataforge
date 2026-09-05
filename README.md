@@ -118,6 +118,37 @@ over the entire neuron axis; the divergence we suspect actually matters is in th
 pathway. Resolving either would mean measuring there specifically, rather than pooling
 over every neuron — and that is the experiment we would run next.
 
+### Does any of this survive a different dataset?
+
+We ran the identical protocol — same architecture, same clone-then-diverge training,
+same 11 θ × 3 seeds sweep — on two more synthetic datasets, and put a selector in the
+artifact so you can switch between all three yourself:
+
+| dataset | what varies | corr(θ,D)<br>per-θ / all-33 | corr(M,D)<br>per-θ / all-33 | M spread |
+|---|---|---|---|---|
+| baseline | — | −0.991 / −0.790 | −0.608 / **+0.174** | 0.024 |
+| long_phrase | 6-token phrases (was 3) | −0.991 / −0.924 | −0.709 / −0.204 | 0.041 |
+| large_vocab | 40 concepts (was 24) | −0.990 / −0.972 | **−0.935** / −0.342 | 0.023 |
+
+Two things held with no exceptions across all three, 33/33 runs each: **averaging is
+worse than concatenation at every single θ**, and the self-merge floor stays at
+essentially zero. Those are now the best-replicated results in the project.
+
+**M's flatness did not replicate.** At 24 concepts (baseline), M sits at a nearly
+constant ~0.72 regardless of θ, and its correlation with damage flips sign depending on
+how you aggregate — the finding we built the "M does not predict mergeability" claim on.
+At 40 concepts (large_vocab), M *rises* — 0.701 at θ = 0 to 0.723 at θ = 1 — on a spread
+barely larger than baseline's (0.023 vs 0.024), and correlates with damage more strongly
+than θ does at the per-θ level (−0.935). Same tiny spread, opposite behaviour.
+
+That revises rather than overturns the earlier claim: **M's flatness is not a property
+of this architecture, it is sensitive to vocabulary size.** Whatever makes the
+neuron-overlap metric go flat at 24 concepts stops happening at 40. We do not know why —
+that is now the sharper version of the open question above, and it is a genuinely
+different, more interesting finding than "the metric is broken": it means the
+overlap-mergeability relationship is conditional on task parameters a single toy
+dataset cannot reveal, which is itself evidence against dismissing the metric outright.
+
 ## Intended learner and prerequisites
 
 Aimed at someone who already knows roughly what a language model is and has heard of
@@ -187,7 +218,8 @@ web/                             Svelte + Vite static site
 | File | Role |
 |---|---|
 | `model/src/bdh_surgery/bdh.py` | The BDH-GPU model definition (config, attention, forward pass, loss). Vendored from upstream and kept byte-identical — see `PROVENANCE.md` for the one call-site workaround this required in `train.py`. |
-| `model/src/bdh_surgery/domains.py` | Generates two synthetic "languages" sharing a θ fraction of a 24-concept pivot vocabulary. This is the only source of training/eval data in the project — nothing is scraped. |
+| `model/src/bdh_surgery/domains.py` | Generates two synthetic "languages" sharing a θ fraction of a pivot vocabulary. This is the only source of training/eval data in the project — nothing is scraped. Token ranges are computed from `n_concepts` (`layout()`), not hard-coded, which is what lets `large_vocab` use 40 concepts without its target pool colliding with the special tokens — at n_concepts=24 this reproduces the original fixed layout exactly (tested). |
+| `model/src/bdh_surgery/datasets.py` | The three dataset specs (`baseline`, `long_phrase`, `large_vocab`): what each varies, and nothing else — same architecture, same protocol, same θ/seed grid throughout, so a difference between them is attributable to the data alone. |
 | `model/src/bdh_surgery/train.py` | Trains one shared base per seed, then clones and fine-tunes it in each of the two domain directions — mirroring the paper's §7.1 protocol. |
 | `model/src/bdh_surgery/merge.py` | Implements the paper's merge rule: concatenate every tensor carrying the neuron dimension n; average everything else (LayerNorm is parameter-free and needs no handling). |
 | `model/src/bdh_surgery/overlap.py` | Computes M: for each pair of parents, Hungarian-matches neurons by activation profile and reports the matched correlation, thresholded at τ ∈ {0.5, 0.7, 0.9} plus a thresholdless mean. |
@@ -202,6 +234,16 @@ web/                             Svelte + Vite static site
 | `web/src/lib/Narrative.svelte` | The four-act guided walkthrough described below. |
 | `web/src/lib/HonestyBadge.svelte` | Renders the `live` / `precomputed` / `illustration` labels applied throughout the UI. |
 | `web/src/lib/Surgery.svelte` | Act 4's ablation UI: lets the learner ablate the collision set or an equally-sized random control and compare teacher-forced loss. |
+
+## Dataset selector
+
+A picker in the header switches between the three datasets described above
+(baseline, long_phrase, large_vocab). Switching is a full reload — new parents, a
+fresh collision analysis — since the datasets differ in `n_concepts` and, for
+large_vocab, `vocab_size` too (40 concepts need a wider token layout than 24 fit in;
+see `model/src/bdh_surgery/datasets.py`). θ itself carries over across the switch: all
+three datasets export the same 11 θ keys, so staying on θ = 0.5 while changing dataset
+is what lets you compare the same overlap level under two different vocabularies.
 
 ## The four acts
 
@@ -271,10 +313,20 @@ n = 1024 per parent, 2048 merged (under concat), sequence length 16, and the wor
 # Python pipeline (from repo root)
 cd model && uv sync && uv run pytest tests/        # 44 tests
 
-cd model && uv run python -m bdh_surgery.sweep      # ~60 min, writes artifacts/runs.csv
-cd model && uv run python -m bdh_surgery.export     # writes web/public/data/
+cd model && uv run python -m bdh_surgery.sweep      # baseline, ~60 min -> artifacts/runs.csv
 
-# The two claim-checking diagnostics (neither is part of the pytest suite)
+# The other two datasets, same grid, run the same way against their own spec:
+cd model && uv run python -c "
+from pathlib import Path
+from bdh_surgery.sweep import run_sweep
+from bdh_surgery.datasets import LONG_PHRASE, LARGE_VOCAB
+for spec in (LONG_PHRASE, LARGE_VOCAB):
+    run_sweep(Path('..')/'artifacts'/f'runs_{spec.id}.csv', spec=spec)
+"                                                    # ~60 min each
+
+cd model && uv run python -m bdh_surgery.export     # writes web/public/data/, all 3 datasets
+
+# The two claim-checking diagnostics (neither is part of the pytest suite; baseline only)
 cd model && uv run python scripts/measure_locality.py   # the locality table above; needs node
 cd model && uv run python scripts/probe_diagnostic.py   # M under pivot vs. own-direction probes
 
@@ -283,9 +335,12 @@ cd web && npm install && npm run dev                # dev server
 cd web && npm run build                             # static build -> web/dist/
 ```
 
-The weights and `sweep.json` committed under `web/public/data/` were produced by exactly
-this sweep + export sequence — running it again with the same seeds (`SEEDS = (0, 1, 2)`
-in `model/src/bdh_surgery/sweep.py`) reproduces them.
+The weights and `sweep.json`/`probes.json`/`manifest.json` committed under
+`web/public/data/` were produced by exactly this sequence — running it again with the
+same seeds (`SEEDS = (0, 1, 2)` in `model/src/bdh_surgery/sweep.py`) reproduces them for
+all three datasets. `manifest.json` is schema v2: everything is nested under
+`datasets.<id>` (`baseline` | `long_phrase` | `large_vocab`), each with its own
+`config`, `n_concepts`, and `featured` weights — see `model/src/bdh_surgery/export.py`.
 
 ## Credits and licences
 
