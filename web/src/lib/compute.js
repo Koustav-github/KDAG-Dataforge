@@ -51,9 +51,13 @@ export async function measureDamageAsync(merged, parentA, parentB, rowsA, rowsB,
 // remembering: dragging back to a θ you have already visited is then free.
 const damageCache = new Map();
 
-export function damageKey(theta, mergeMode, ablated) {
+export function damageKey(dataset, theta, mergeMode, ablated) {
+  // `dataset` must be first-class here: baseline and large_vocab both produce
+  // the string key "0.5|concat|none" from (theta, mergeMode, ablated) alone,
+  // so two different models' damage would collide in the cache and a dataset
+  // switch could silently show the PREVIOUS dataset's cached number.
   const abl = ablated && ablated.length ? `${ablated.length}:${ablated[0]}` : 'none';
-  return `${theta}|${mergeMode}|${abl}`;
+  return `${dataset}|${theta}|${mergeMode}|${abl}`;
 }
 
 export async function cachedDamage(key, compute) {

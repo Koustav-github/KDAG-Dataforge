@@ -13,8 +13,13 @@ import { mergeConcat, mergeAverage } from '../merge.js';
 
 export const manifest = writable(null);
 
-// String key into manifest.featured, e.g. "0.5". Only ever set to a θ that
-// has weights on disk.
+// Key into manifest.datasets, e.g. "baseline" | "long_phrase" | "large_vocab".
+// Switching this is a bigger change than switching theta — n_concepts and
+// possibly vocab_size differ — so App.svelte treats it as a full reload.
+export const dataset = writable('baseline');
+
+// String key into manifest.datasets[$dataset].featured, e.g. "0.5". Only ever
+// set to a θ that has weights on disk FOR THE CURRENT DATASET.
 export const theta = writable('0.5');
 
 export const mergeMode = writable('concat');

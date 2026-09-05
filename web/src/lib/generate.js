@@ -2,10 +2,13 @@ import { forward } from '../bdh_forward.js';
 import { EOS } from './tokens.js';
 
 // Greedy-decodes up to `maxNew` tokens after `promptTokens`, stopping early
-// on EOS. Sequences here are short (<=16), so recomputing forward() over
-// the whole running sequence at each step is cheap and keeps this stateless
-// with respect to bdh_forward.js's recurrent state.
-export function greedyDecode(model, promptTokens, maxNew, { ablated = null } = {}) {
+// on EOS. `eos` defaults to the 24-concept datasets' value (76) — large_vocab
+// uses a different id (124), so callers on that dataset must pass it
+// explicitly or decoding never stops early and just runs to maxNew.
+// Sequences here are short (<=16), so recomputing forward() over the whole
+// running sequence at each step is cheap and keeps this stateless with
+// respect to bdh_forward.js's recurrent state.
+export function greedyDecode(model, promptTokens, maxNew, { ablated = null, eos = EOS } = {}) {
   const seq = promptTokens.slice();
   for (let step = 0; step < maxNew; step++) {
     const logits = forward(model, seq, { ablated });
@@ -19,7 +22,7 @@ export function greedyDecode(model, promptTokens, maxNew, { ablated = null } = {
       }
     }
     seq.push(best);
-    if (best === EOS) break;
+    if (best === eos) break;
   }
   return seq.slice(promptTokens.length);
 }
