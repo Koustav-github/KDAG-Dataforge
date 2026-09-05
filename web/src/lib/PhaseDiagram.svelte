@@ -204,6 +204,7 @@
 
 
 
+  <div class="chart-scroll">
   <svg viewBox="0 0 {W} {H}" role="img" aria-label="Phase diagram: {xLabel} against merge damage, one point per θ with a min-max error bar across three seeds, plus the averaging control as a second series">
     <!-- axes -->
     <line x1={PAD.left} y1={H - PAD.bottom} x2={W - PAD.right} y2={H - PAD.bottom} class="axis" />
@@ -254,6 +255,7 @@
       </text>
     {/if}
   </svg>
+  </div>
 
   {#if xMode === 'm_mean' && mSpan}
     <!-- Context ruler: the plotted window drawn against M's full [0,1] domain.
@@ -316,6 +318,7 @@
     width: 100%;
     height: auto;
   }
+  .chart-scroll { width: 100%; }
   .axis-toggle {
     display: flex;
     align-items: center;
@@ -507,5 +510,35 @@
     font-size: 0.65rem;
     color: var(--muted);
     padding: 0 2px;
+  }
+
+  /* ---- Narrow screens -------------------------------------------------
+     The chart's text is sized in viewBox units (9-10.5px against a 760-unit
+     width). Scaling the whole SVG down to a ~310px phone viewport would
+     render those labels at under 4 CSS px — unreadable. So below 640px the
+     chart keeps a legible minimum width and scrolls sideways inside its own
+     container instead, leaving the page itself free of horizontal scroll. */
+  @media (max-width: 640px) {
+    .chart-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      /* room for the scrollbar so it never covers the x-axis labels */
+      padding-bottom: 0.35rem;
+    }
+    .chart-scroll svg {
+      min-width: 560px;
+    }
+    .axis-toggle {
+      flex-wrap: wrap;
+      gap: 0.3rem;
+    }
+    .ruler svg { min-width: 460px; }
+    .ruler { overflow-x: auto; }
+  }
+
+  @media (pointer: coarse) {
+    .axis-toggle button {
+      padding: 0.45rem 0.8rem;
+    }
   }
 </style>

@@ -172,6 +172,7 @@
     display: flex;
     align-items: center;
     gap: 0.7rem;
+    flex-wrap: wrap;
   }
   .guide-head h2 {
     margin: 0;
@@ -294,5 +295,19 @@
     font-size: 0.8rem;
     color: var(--muted);
     background: var(--panel-bg);
+  }
+
+  @media (max-width: 640px) {
+    .guide-controls {
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+    /* the illustration cap is narrower than most phone viewports already;
+       let it use the full width rather than sitting in a 320px column */
+    .illustration-block { max-width: none; }
+  }
+
+  @media (pointer: coarse) {
+    button { padding: 0.55rem 0.95rem; }
   }
 </style>

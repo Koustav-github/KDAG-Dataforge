@@ -76,6 +76,7 @@
       Did ablating the collision set beat removing the same number of neurons at random?
     </figcaption>
 
+    <div class="chart-scroll">
     <svg viewBox="0 0 {W} {H}" role="img"
          aria-label={`Baseline loss ${f(baseline)}. Ablating the collision set gives ${f(collision)}. Ablating ${draws.length} random sets of the same size averages ${f(mean)} with standard deviation ${f(sd)}, a noise band from ${f(bandLo)} to ${f(bandHi)}. The collision result sits ${verdict}.`}>
 
@@ -137,6 +138,7 @@
       <text x={PADL} y={H - 6} class="tick" text-anchor="start">← lower loss is better</text>
       <text x={W - PADR} y={H - 6} class="tick" text-anchor="end">mean cross-entropy</text>
     </svg>
+    </div>
 
     <p class="read" class:bad={inside || gap < 0}>
       <strong>Read it like this.</strong>
@@ -168,6 +170,19 @@
 <style>
   .strip { margin: 0; display: flex; flex-direction: column; gap: 0.55rem; }
   svg { width: 100%; height: auto; display: block; }
+  .chart-scroll { width: 100%; }
+
+  /* Text here is sized in viewBox units against a 720-unit width, so a phone
+     viewport would shrink the 10.5px ticks to well under 5 CSS px. Keep a
+     legible floor and scroll within the figure instead. */
+  @media (max-width: 640px) {
+    .chart-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 0.35rem;
+    }
+    .chart-scroll svg { min-width: 520px; }
+  }
   .question { font-size: 0.85rem; font-weight: 600; color: var(--fg); }
   .lbl { font-size: 12.5px; font-family: inherit; }
   .lbl.strong { font-weight: 700; }

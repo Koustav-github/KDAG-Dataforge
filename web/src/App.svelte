@@ -11,6 +11,7 @@
   import HonestyBadge from './lib/HonestyBadge.svelte';
   import { buildLexicon, labelSequence, splitProbe, layoutFor } from './lib/tokens.js';
   import { greedyDecode } from './lib/generate.js';
+  import { commitDelayMs } from './lib/device.js';
   import { measureDamageAsync, cachedDamage, damageKey } from './lib/compute.js';
 
   let probes = null;
@@ -184,8 +185,10 @@
   // Committing to the `theta` store is what reloads weights and restarts every
   // heavy view, so it is debounced — otherwise one drag across the slider fires
   // eleven model loads and eleven timeline restarts.
+  // Touch drags emit many more intermediate values than a mouse drag, so the
+  // hold is longer on phones (260 ms vs 140 ms) — see lib/device.js.
   let commitTimer = null;
-  const COMMIT_MS = 140;
+  const COMMIT_MS = commitDelayMs();
 
   function selectTheta(val, immediate = false) {
     sweepTheta = val;
@@ -613,5 +616,47 @@
   }
   .caps-footer strong {
     color: var(--fg);
+  }
+
+  /* ---- Narrow screens -------------------------------------------------
+     Layout only. Nothing here changes a measured value; a phone runs the
+     same sequence counts as a laptop and reports the same numbers. */
+  @media (max-width: 640px) {
+    .app {
+      padding: 1.25rem 0.85rem 2.5rem;
+      gap: 1.6rem;
+    }
+    header h1 { font-size: 1.2rem; }
+    .tagline { font-size: 0.84rem; }
+    section h2 { font-size: 1rem; }
+
+    /* The slider and its caption cannot share a line at this width: the
+       input alone claims up to 320px and the caption asks for 15rem. */
+    .theta-row {
+      flex-wrap: wrap;
+      gap: 0.5rem 0.7rem;
+    }
+    .theta-row input {
+      flex: 1 1 100%;
+      max-width: none;
+    }
+    .theta-cap {
+      min-width: 0;
+      flex: 1 1 100%;
+    }
+    .theta-sub { margin-left: 0; }
+  }
+
+  /* Touch targets. Pointer-coarse rather than width: a small window on a
+     desktop still has a precise pointer and does not need the extra bulk. */
+  @media (pointer: coarse) {
+    .dataset-picker button,
+    .segmented button {
+      padding: 0.5rem 0.9rem;
+      font-size: 0.82rem;
+    }
+    .theta-row input {
+      height: 2rem;              /* easier to grab mid-drag */
+    }
   }
 </style>

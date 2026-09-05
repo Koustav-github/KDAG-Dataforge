@@ -1,5 +1,7 @@
 # Model Surgery: fusing two BDH language models
 
+**Live artifact:** [bdh-merger.vercel.app](https://bdh-merger.vercel.app) (opens without sign-in)
+
 Team Invariance, IIT Kharagpur. Submission for the Pathway track: an interactive
 explainer connecting **model merging / composability in BDH** (arXiv:2509.26507 §7.1)
 to the concept of parametric memory in LLMs. See `ps/` (the two problem-statement PDFs)
@@ -236,12 +238,12 @@ model/                          Python (uv project)
     ablate.py                   collision-neuron scoring (fires on both parents' directions)
     damage.py                   D: merge damage relative to the parent it replaces
     recurrent.py                the recurrent (Eq. 8) forward pass, ported to JS for the browser
-    sweep.py                    the θ x seed grid that produces sweep.json (33 rows)
-    export.py                   writes web/public/data/ (manifest, weights, probes, sweep)
+    sweep.py                    the θ x seed grid that produces sweep.json (33 rows/dataset, 99 total)
+    export.py                   writes web/public/data/ (manifest, weights, probes, sweep; schema v2)
   scripts/
     measure_locality.py         the locality check: drives the shipped JS via node
     probe_diagnostic.py         M under the shared-pivot probe vs. own-direction probes
-  tests/                        44 tests covering every module above
+  tests/                        58 tests covering every module above
 
 web/                             Svelte + Vite static site
   src/
@@ -354,12 +356,27 @@ n = 1024 per parent, 2048 merged (under concat), sequence length 16, and the wor
 6. **No parameter-count control.** Comparing the merged 2n model against a single parent
    trained at 2n would rule out a pure size effect. It was planned, deferred, and never
    run; nothing in this repository claims otherwise.
+7. **Phones are slower, but not less accurate.** Every forward pass runs in JavaScript on
+   the main thread — a single sequence costs roughly 50 ms on a laptop and three to five
+   times that on a phone, so a θ or k change that settles in about a second on desktop can
+   take several seconds on mobile. `web/src/lib/device.js` adapts to this by slicing the
+   work more finely (one sequence between frames instead of two), capping canvas backing
+   stores at 2× device pixel ratio, and holding the slider longer before committing
+   (260 ms vs 140 ms). **None of these change a measured value** — a phone runs the same
+   row counts, the same five random draws and the same sequences as a laptop, and reports
+   identical numbers. The wide charts (phase diagram, ablation strip) size their text in
+   viewBox units, so below 640 px they keep a legible minimum width and scroll sideways
+   inside their own container rather than shrinking their labels to unreadable size.
 
 ## How to reproduce
 
+The live artifact at [bdh-merger.vercel.app](https://bdh-merger.vercel.app) already
+ships the precomputed weights, sweep, and probes committed under `web/public/data/` —
+nothing below is required just to use it. These steps regenerate that data from scratch.
+
 ```bash
 # Python pipeline (from repo root)
-cd model && uv sync && uv run pytest tests/        # 44 tests
+cd model && uv sync && uv run pytest tests/        # 58 tests
 
 cd model && uv run python -m bdh_surgery.sweep      # baseline, ~60 min -> artifacts/runs.csv
 

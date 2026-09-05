@@ -11,6 +11,7 @@
   // decoder, so the texture you see is the trained model's own structure, not
   // generated noise.
   import { onMount } from 'svelte';
+  import { canvasScale } from './device.js';
 
   export let parentA = null;
   export let parentB = null;
@@ -91,7 +92,7 @@
 
   function draw() {
     if (!canvasEl || !magA || !magB) return;
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = canvasScale();
     const w = cssW;
     canvasEl.width = Math.round(w * dpr);
     canvasEl.height = Math.round(H * dpr);

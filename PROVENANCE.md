@@ -20,16 +20,27 @@ workaround only — `bdh.py` itself is unmodified from upstream.
 ## Data
 
 All training and evaluation data is **generated**, not scraped or collected from any external corpus. Two
-synthetic languages are built over a shared 24-concept pivot vocabulary; a parameter θ controls what
-fraction of concepts get an identical surface token in both languages (θ = 0: disjoint vocabularies,
-θ = 1: identical vocabularies). See `model/src/bdh_surgery/domains.py`.
+synthetic languages are built over a shared pivot vocabulary; a parameter θ controls what fraction of
+concepts get an identical surface token in both languages (θ = 0: disjoint vocabularies, θ = 1: identical
+vocabularies). The layout (token ranges, specials) is derived from `n_concepts` via
+`domains.py:layout()`, not hard-coded, so the same generator serves all three datasets below. See
+`model/src/bdh_surgery/domains.py` and `model/src/bdh_surgery/datasets.py`.
+
+Three dataset specs share this generator and the identical protocol, varying only one axis each:
+
+| dataset | n_concepts | phrase_len | vocab_size | what it varies |
+|---|---|---|---|---|
+| `baseline` | 24 | 3 | 96 | — |
+| `long_phrase` | 24 | 6 | 96 | phrase length |
+| `large_vocab` | 40 | 3 | 128 | vocabulary size |
 
 ## Weights
 
 Weights are trained in-repo, from scratch, on the generated synthetic data — no pretrained checkpoints are
 used anywhere in the pipeline. Seeds are pinned in `model/src/bdh_surgery/sweep.py`: `SEEDS = (0, 1, 2)`,
-swept across `THETAS = (0.0, 0.1, ..., 1.0)` (11 values), giving the 33-row sweep in
-`web/public/data/sweep.json`.
+swept across `THETAS = (0.0, 0.1, ..., 1.0)` (11 values), giving a 33-row sweep per dataset — 99 rows total
+across `baseline`, `long_phrase`, and `large_vocab` — in `web/public/data/sweep.json`
+(`schema_version: 2`, nested under `datasets.<id>`).
 
 ## Verification
 

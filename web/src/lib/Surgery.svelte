@@ -8,6 +8,7 @@
   import { forward } from '../bdh_forward.js';
   import { ablated } from './store.js';
   import { meanLossAsync } from './compute.js';
+  import { canvasScale } from './device.js';
   import SurgeryDerivation from './SurgeryDerivation.svelte';
   import { onMount } from 'svelte';
   import AblationStrip from './AblationStrip.svelte';
@@ -190,7 +191,7 @@
     const rws = Math.ceil(n / cols);
     const cell = Math.max(4, Math.floor(w / cols));
     cellPx = cell;
-    const dpr = window.devicePixelRatio || 1;
+    const dpr = canvasScale();
     canvas.width = Math.round(cols * cell * dpr);
     canvas.height = Math.round(rws * cell * dpr);
     canvas.style.width = `${cols * cell}px`;
@@ -581,5 +582,23 @@
   }
 
   @media (max-width: 760px) {
+    /* The k slider and its label cannot share a line once the label carries
+       the neuron count; let the slider take a row of its own. */
+    .k-row {
+      flex-wrap: wrap;
+      gap: 0.35rem 0.6rem;
+    }
+    .k-row input[type='range'] {
+      flex: 1 1 100%;
+    }
+  }
+
+  @media (pointer: coarse) {
+    .buttons button {
+      padding: 0.5rem 0.85rem;
+    }
+    .k-row input[type='range'] {
+      height: 2rem;
+    }
   }
 </style>

@@ -11,6 +11,7 @@
 // Nothing here changes a number. Same definitions as model/src/bdh_surgery,
 // just scheduled so the page stays alive while they run.
 import { sequenceLoss } from './loss.js';
+import { lossChunk } from './device.js';
 
 const nextFrame = () =>
   new Promise((r) =>
@@ -18,7 +19,9 @@ const nextFrame = () =>
   );
 
 // Run `fn` over each row, surrendering the thread every `chunk` rows.
-async function mapYielding(rows, fn, chunk = 2) {
+// `chunk` defaults to the device-appropriate slice (1 on phones, 2 on desktop);
+// it only affects scheduling, never the values produced.
+async function mapYielding(rows, fn, chunk = lossChunk()) {
   const out = [];
   for (let i = 0; i < rows.length; i++) {
     out.push(fn(rows[i], i));
