@@ -5,6 +5,17 @@ explainer connecting **model merging / composability in BDH** (arXiv:2509.26507 
 to the concept of parametric memory in LLMs. See `ps/` (the two problem-statement PDFs)
 and `docs/` for the original design rationale.
 
+The hypothesis this project tests, and both of its controls, come from the weight-space
+model-merging literature outside BDH: task arithmetic (Ilharco et al. 2022,
+[arXiv:2212.04089](https://arxiv.org/abs/2212.04089)), the disentanglement claim we
+falsify (Ortiz-Jimenez et al. 2023,
+[arXiv:2305.12827](https://arxiv.org/abs/2305.12827)), the averaging result we invert
+(Wortsman et al. 2022, [arXiv:2203.05482](https://arxiv.org/abs/2203.05482)), and the
+interference-localization premise our Act 4 negative result speaks to (Yadav et al. 2023,
+[arXiv:2306.01708](https://arxiv.org/abs/2306.01708)). Each is cited again beside the
+specific claim it supports below, and summarised as a table in
+[Related work](#related-work).
+
 ## The claim
 
 > Merge damage in a pair of BDH models is strongly predictable — but not from the thing
@@ -37,8 +48,13 @@ That is a real negative result about an open question, not a broken project. The
 averaging control and the θ relationship are genuine positive findings and they stand on
 their own. We report all of it as a partial answer to a question arXiv:2509.26507 §7.1
 poses but never tests ("when the model latent space promotes concept disentangling then
-it is feasible to directly compose concepts"), not as a refutation of the paper. Our
-interpretation (stated as interpretation, not fact):
+it is feasible to directly compose concepts"), not as a refutation of the paper. That
+disentanglement-implies-composability claim is not BDH-specific — it is the central
+finding of Ortiz-Jimenez et al. 2023 ([arXiv:2305.12827](https://arxiv.org/abs/2305.12827)),
+who show weight disentanglement is the property that makes task arithmetic compose
+cleanly in Transformers. Our M metric was our attempt at a BDH-specific version of their
+test, on their own hypothesis, in a different architecture — and it failed to find the
+relationship. Our interpretation (stated as interpretation, not fact):
 both parents in this project are fine-tuned clones of one shared base at a modest
 learning rate (see `model/src/bdh_surgery/train.py`), so the bulk of the neuron
 population stays near the common ancestor and matches well under every condition. The
@@ -81,7 +97,11 @@ raises.
   values**. This is the strongest result in the project, and it is the architectural
   point of the whole artifact — concatenation is available to BDH because every
   parameter lives on one uniform neuron axis; no Transformer has an equivalent
-  operation.
+  operation. This *inverts* the headline result of Wortsman et al. 2022's Model Soups
+  ([arXiv:2203.05482](https://arxiv.org/abs/2203.05482)), where averaging fine-tuned
+  weights *beats* picking a single model — their result and ours are not in tension,
+  because BDH's neuron-axis concatenation is an operation their weight-averaged
+  Transformers have no equivalent of.
 - **Self-merge floor**: fusing a model with a `copy.deepcopy` duplicate of itself (see
   `sweep.py`: it is a bit-identical copy, not an independently seeded retrain) yields
   damage of −0.00077 ≤ D ≤ +0.00347 across all 33 runs, mean +0.00135, with 3 of the 33
@@ -118,6 +138,14 @@ over the entire neuron axis; the divergence we suspect actually matters is in th
 pathway. Resolving either would mean measuring there specifically, rather than pooling
 over every neuron — and that is the experiment we would run next.
 
+This is a negative result against the same premise TIES-Merging (Yadav et al. 2023,
+[arXiv:2306.01708](https://arxiv.org/abs/2306.01708)) builds on: that merge interference
+concentrates in identifiable, prunable parameters. TIES localizes interference by *sign*
+and *magnitude* conflict between task vectors, not by our collision-score construction, so
+this is not a direct refutation of their method — but our Act 4 result (collision-set
+ablation losing to a random control at k = 100) is evidence that the localization premise
+does not transfer for free to BDH's neuron-axis merge, where it would need its own test.
+
 ### Does any of this survive a different dataset?
 
 We ran the identical protocol — same architecture, same clone-then-diverge training,
@@ -148,6 +176,26 @@ that is now the sharper version of the open question above, and it is a genuinel
 different, more interesting finding than "the metric is broken": it means the
 overlap-mergeability relationship is conditional on task parameters a single toy
 dataset cannot reveal, which is itself evidence against dismissing the metric outright.
+
+## Related work
+
+All four papers below study weight-space model merging in Transformers, not BDH — the
+BDH-specific evidence is in [The claim](#the-claim) above and cited to
+arXiv:2509.26507 §7.1 throughout. These are the primary sources the project's hypothesis,
+its controls, and its negative results engage with directly, each already cited beside
+its claim above:
+
+| Paper | arXiv | Year | Claims | How our result engages it |
+|---|---|---|---|---|
+| Editing Models with Task Arithmetic (Ilharco et al.) | [2212.04089](https://arxiv.org/abs/2212.04089) | 2022 | Task vectors — weight-space directions that compose additively across models sharing an initialization | We use the same shared-initialization setup (both parents are fine-tuned from one base), but BDH's uniform neuron axis admits **concatenation**, an operation task arithmetic's additive vectors cannot express |
+| Model soups (Wortsman et al.) | [2203.05482](https://arxiv.org/abs/2203.05482) | 2022 | Averaging fine-tuned weights beats picking a single model | Our best-replicated result **inverts** this for BDH's neuron-axis merge: averaging loses to concatenation at every θ, 33/33 runs, across all 3 datasets |
+| Task Arithmetic in the Tangent Space (Ortiz-Jimenez et al.) | [2305.12827](https://arxiv.org/abs/2305.12827) | 2023 | Weight **disentanglement** is the property that makes task arithmetic compose cleanly | This project is a direct test of their hypothesis in BDH via our M metric — and it is **falsified**: M does not predict merge damage in our setup |
+| TIES-Merging (Yadav et al.) | [2306.01708](https://arxiv.org/abs/2306.01708) | 2023 | Merge interference concentrates in identifiable, prunable parameters | Our Act 4 negative result (collision-set ablation losing to a random control at k = 100) is evidence the localization premise does not transfer for free to BDH's neuron-axis merge |
+
+None of these four are cited by arXiv:2509.26507 itself — they are independent primary
+sources for the general model-merging claims this project's controls are built to test,
+brought in because the paper's own §7.1 experiment is scoped narrowly to BDH and does not
+engage with the wider literature's disentanglement or interference-localization claims.
 
 ## Intended learner and prerequisites
 
