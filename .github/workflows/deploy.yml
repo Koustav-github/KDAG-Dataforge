@@ -20,9 +20,21 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
       - uses: actions/configure-pages@v5
+      - name: Build
+        working-directory: web
+        # Pages serves from /<repo>/, so the bundle and its /data fetches have
+        # to be built against that base or they 404 at the domain root.
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}/
+        run: |
+          npm ci
+          npm run build
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: web
+          path: web/dist
       - id: deployment
         uses: actions/deploy-pages@v4
