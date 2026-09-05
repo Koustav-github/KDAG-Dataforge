@@ -1,0 +1,6541 @@
+{
+  "schema_version": 2,
+  "dtype": "int8",
+  "datasets": {
+    "baseline": {
+      "label": "Baseline",
+      "blurb": "24 concepts, 3-token phrases \u2014 the original scenario.",
+      "n_concepts": 24,
+      "phrase_len": 3,
+      "config": {
+        "n_layer": 4,
+        "n_embd": 64,
+        "n_head": 1,
+        "vocab_size": 96,
+        "n": 1024
+      },
+      "featured": {
+        "0.0": {
+          "lex_a": [
+            26,
+            61,
+            45,
+            39,
+            32,
+            69,
+            71,
+            67,
+            46,
+            40,
+            70,
+            34,
+            64,
+            63,
+            60,
+            65,
+            59,
+            33,
+            38,
+            47,
+            44,
+            56,
+            41,
+            51
+          ],
+          "lex_b": [
+            58,
+            25,
+            48,
+            37,
+            53,
+            72,
+            30,
+            36,
+            52,
+            35,
+            28,
+            29,
+            54,
+            42,
+            66,
+            31,
+            43,
+            68,
+            62,
+            55,
+            50,
+            57,
+            27,
+            49
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.0_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008371485851881072
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.0_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009571312684712448
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.0_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008761455106922961
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.0_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.0_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002255362788523276
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.0_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006089092004956223
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.0_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0007878320188972894
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.0_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.001170344357415447
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.0_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009166004620199128
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.0_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.0_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0022207353058762438
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.0_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006623614843436113
+            }
+          }
+        },
+        "0.1": {
+          "lex_a": [
+            52,
+            67,
+            66,
+            30,
+            26,
+            64,
+            29,
+            45,
+            49,
+            58,
+            63,
+            54,
+            40,
+            35,
+            46,
+            48,
+            69,
+            71,
+            61,
+            33,
+            38,
+            47,
+            44,
+            56
+          ],
+          "lex_b": [
+            37,
+            65,
+            32,
+            60,
+            51,
+            25,
+            59,
+            39,
+            53,
+            68,
+            36,
+            42,
+            40,
+            35,
+            72,
+            28,
+            34,
+            31,
+            43,
+            70,
+            62,
+            55,
+            50,
+            57
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.1_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0009330354454949146
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.1_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009506092531474556
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.1_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009024496974907522
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.1_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.1_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0021885039768819734
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.1_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006543325744275972
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.1_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008004409825707984
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.1_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.001004571168441472
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.1_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009256566134024793
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.1_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.1_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0022614985469758043
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.1_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0005784897119041503
+            }
+          }
+        },
+        "0.2": {
+          "lex_a": [
+            54,
+            65,
+            68,
+            32,
+            63,
+            51,
+            25,
+            67,
+            39,
+            49,
+            72,
+            66,
+            28,
+            42,
+            40,
+            46,
+            53,
+            27,
+            61,
+            34,
+            41,
+            64,
+            33,
+            38
+          ],
+          "lex_b": [
+            37,
+            65,
+            58,
+            30,
+            26,
+            60,
+            29,
+            45,
+            39,
+            69,
+            71,
+            36,
+            28,
+            42,
+            35,
+            52,
+            53,
+            48,
+            70,
+            59,
+            31,
+            43,
+            57,
+            62
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.2_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008156179912446991
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.2_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.000963949840369187
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.2_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009088305037791334
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.2_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.2_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002260009134848287
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.2_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.000689772229025683
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.2_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008446020404184897
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.2_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009594542069697944
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.2_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008959564871675386
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.2_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.2_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0022126110050621935
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.2_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0008087420440095616
+            }
+          }
+        },
+        "0.3": {
+          "lex_a": [
+            37,
+            53,
+            60,
+            56,
+            30,
+            48,
+            51,
+            52,
+            25,
+            26,
+            69,
+            71,
+            58,
+            45,
+            61,
+            68,
+            36,
+            28,
+            40,
+            29,
+            72,
+            59,
+            31,
+            43
+          ],
+          "lex_b": [
+            67,
+            53,
+            27,
+            49,
+            32,
+            50,
+            70,
+            65,
+            25,
+            64,
+            39,
+            54,
+            58,
+            45,
+            35,
+            68,
+            36,
+            42,
+            46,
+            63,
+            34,
+            41,
+            66,
+            43
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.3_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008215862582987688
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.3_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009800602249273164
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.3_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009104107308575488
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.3_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.3_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.00217957642134719
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.3_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006537660956382751
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.3_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008032950829333208
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.3_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010334009260643186
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.3_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008396187753189267
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.3_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.3_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0022339248281764233
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.3_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0005974016320987011
+            }
+          }
+        },
+        "0.4": {
+          "lex_a": [
+            50,
+            28,
+            72,
+            51,
+            30,
+            68,
+            47,
+            48,
+            70,
+            37,
+            27,
+            49,
+            67,
+            65,
+            39,
+            42,
+            56,
+            45,
+            35,
+            71,
+            60,
+            46,
+            66,
+            34
+          ],
+          "lex_b": [
+            63,
+            28,
+            58,
+            52,
+            32,
+            68,
+            53,
+            54,
+            70,
+            37,
+            25,
+            26,
+            67,
+            65,
+            40,
+            42,
+            56,
+            61,
+            35,
+            36,
+            55,
+            29,
+            44,
+            34
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.4_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008754097218588581
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.4_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009304544353109645
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.4_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008773475181399368
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.4_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.4_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0022713262734450693
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.4_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006455108523368835
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.4_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0007975994953959007
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.4_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0011982714801322756
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.4_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008282173923620089
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.4_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.4_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0022463779749832755
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.4_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006872802738129623
+            }
+          }
+        },
+        "0.5": {
+          "lex_a": [
+            54,
+            49,
+            58,
+            51,
+            48,
+            36,
+            52,
+            28,
+            32,
+            67,
+            70,
+            27,
+            50,
+            26,
+            69,
+            39,
+            40,
+            42,
+            45,
+            62,
+            35,
+            47,
+            55,
+            29
+          ],
+          "lex_b": [
+            53,
+            49,
+            60,
+            51,
+            65,
+            36,
+            56,
+            30,
+            32,
+            67,
+            37,
+            25,
+            50,
+            26,
+            66,
+            39,
+            40,
+            72,
+            45,
+            62,
+            38,
+            61,
+            46,
+            29
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.5_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008050392814508573
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.5_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009616244378991014
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.5_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008656570291894627
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.5_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.5_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0022791037409324345
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.5_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006955959430829747
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.5_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0007887850478878172
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.5_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0011304250852329524
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.5_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009087828669961044
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.5_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.5_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0022739439498721146
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.5_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006865096960480758
+            }
+          }
+        },
+        "0.6": {
+          "lex_a": [
+            72,
+            61,
+            32,
+            62,
+            49,
+            48,
+            65,
+            58,
+            30,
+            36,
+            28,
+            51,
+            37,
+            27,
+            25,
+            26,
+            71,
+            68,
+            40,
+            42,
+            67,
+            56,
+            45,
+            47
+          ],
+          "lex_b": [
+            60,
+            61,
+            32,
+            62,
+            53,
+            48,
+            50,
+            38,
+            30,
+            36,
+            35,
+            54,
+            37,
+            27,
+            57,
+            26,
+            71,
+            39,
+            40,
+            42,
+            67,
+            69,
+            52,
+            47
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.6_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008152987309328214
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.6_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009764505066270903
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.6_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008918988540416627
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.6_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.6_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002266438927237443
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.6_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006284688518741938
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.6_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008905437283628569
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.6_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010099190426623727
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.6_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009443589786844929
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.6_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.6_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002378872529728206
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.6_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006383232127024433
+            }
+          }
+        },
+        "0.7": {
+          "lex_a": [
+            53,
+            30,
+            67,
+            54,
+            65,
+            61,
+            62,
+            56,
+            28,
+            51,
+            57,
+            36,
+            32,
+            35,
+            40,
+            58,
+            37,
+            27,
+            42,
+            50,
+            26,
+            33,
+            71,
+            39
+          ],
+          "lex_b": [
+            72,
+            30,
+            67,
+            54,
+            65,
+            61,
+            43,
+            68,
+            28,
+            51,
+            57,
+            49,
+            32,
+            35,
+            48,
+            58,
+            37,
+            25,
+            42,
+            50,
+            26,
+            33,
+            70,
+            39
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.7_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008343557321180509
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.7_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009543665164098965
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.7_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008962154388427734
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.7_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.7_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0022462080782792698
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.7_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006715780285399729
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.7_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0007756524902629102
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.7_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010193770560692613
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.7_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009347120021271894
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.7_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.7_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002181665634545754
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.7_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006668636296677777
+            }
+          }
+        },
+        "0.8": {
+          "lex_a": [
+            54,
+            30,
+            68,
+            56,
+            66,
+            62,
+            48,
+            39,
+            28,
+            57,
+            58,
+            36,
+            51,
+            32,
+            35,
+            49,
+            72,
+            65,
+            27,
+            25,
+            42,
+            50,
+            26,
+            33
+          ],
+          "lex_b": [
+            61,
+            30,
+            68,
+            56,
+            66,
+            62,
+            43,
+            69,
+            28,
+            57,
+            58,
+            36,
+            51,
+            32,
+            40,
+            49,
+            72,
+            37,
+            27,
+            25,
+            42,
+            50,
+            26,
+            33
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.8_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008742432660005224
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.8_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009727946768595478
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.8_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009180929834448447
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.8_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.8_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0022918136101069413
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.8_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006339592844482482
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.8_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.000805245785731969
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.8_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0011130082091008583
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.8_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010227792141005749
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.8_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.8_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0022678999450263075
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.8_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0005997267412388419
+            }
+          }
+        },
+        "0.9": {
+          "lex_a": [
+            57,
+            30,
+            59,
+            33,
+            70,
+            65,
+            51,
+            43,
+            39,
+            34,
+            56,
+            26,
+            61,
+            36,
+            58,
+            35,
+            40,
+            44,
+            63,
+            62,
+            69,
+            64,
+            37,
+            48
+          ],
+          "lex_b": [
+            49,
+            30,
+            59,
+            33,
+            70,
+            65,
+            51,
+            43,
+            39,
+            34,
+            56,
+            26,
+            61,
+            36,
+            32,
+            35,
+            40,
+            44,
+            63,
+            62,
+            69,
+            64,
+            37,
+            48
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.9_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008401208975183682
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.9_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009727481547303087
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.9_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009272397151143532
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.9_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.9_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002191518470058291
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.9_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006252071402204319
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th0.9_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.000815148428669126
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.9_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010607473728224987
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th0.9_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.000978763413241529
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th0.9_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th0.9_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0023264967081115004
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th0.9_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006003852669648298
+            }
+          }
+        },
+        "1.0": {
+          "lex_a": [
+            30,
+            63,
+            54,
+            36,
+            29,
+            42,
+            62,
+            26,
+            43,
+            33,
+            59,
+            66,
+            57,
+            34,
+            39,
+            72,
+            61,
+            49,
+            32,
+            35,
+            40,
+            44,
+            56,
+            65
+          ],
+          "lex_b": [
+            30,
+            63,
+            54,
+            36,
+            29,
+            42,
+            62,
+            26,
+            43,
+            33,
+            59,
+            66,
+            57,
+            34,
+            39,
+            72,
+            61,
+            49,
+            32,
+            35,
+            40,
+            44,
+            56,
+            65
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th1.0_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008485776584918104
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th1.0_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.00098712730595446
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th1.0_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009129148885959716
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th1.0_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th1.0_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002266794443130493
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th1.0_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006794142793482683
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "baseline_th1.0_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.000802507550697627
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th1.0_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010972956972798026
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "baseline_th1.0_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009836000133687118
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "baseline_th1.0_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "baseline_th1.0_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0022563812300914854
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "baseline_th1.0_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006672559291359008
+            }
+          }
+        }
+      }
+    },
+    "long_phrase": {
+      "label": "Longer phrases",
+      "blurb": "Same 24-concept vocabulary, but 6-token phrases \u2014 twice the context per example.",
+      "n_concepts": 24,
+      "phrase_len": 6,
+      "config": {
+        "n_layer": 4,
+        "n_embd": 64,
+        "n_head": 1,
+        "vocab_size": 96,
+        "n": 1024
+      },
+      "featured": {
+        "0.0": {
+          "lex_a": [
+            26,
+            61,
+            45,
+            39,
+            32,
+            69,
+            71,
+            67,
+            46,
+            40,
+            70,
+            34,
+            64,
+            63,
+            60,
+            65,
+            59,
+            33,
+            38,
+            47,
+            44,
+            56,
+            41,
+            51
+          ],
+          "lex_b": [
+            58,
+            25,
+            48,
+            37,
+            53,
+            72,
+            30,
+            36,
+            52,
+            35,
+            28,
+            29,
+            54,
+            42,
+            66,
+            31,
+            43,
+            68,
+            62,
+            55,
+            50,
+            57,
+            27,
+            49
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.0_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0007643199811770222
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.0_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.000989276710457689
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.0_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009321400851715268
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.0_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.0_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0022098478369825467
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.0_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006756188245270196
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.0_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008185237763434883
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.0_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010074759562184491
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.0_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009446415727532754
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.0_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.0_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0019516906165701197
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.0_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0007350785643096984
+            }
+          }
+        },
+        "0.1": {
+          "lex_a": [
+            52,
+            67,
+            66,
+            30,
+            26,
+            64,
+            29,
+            45,
+            49,
+            58,
+            63,
+            54,
+            40,
+            35,
+            46,
+            48,
+            69,
+            71,
+            61,
+            33,
+            38,
+            47,
+            44,
+            56
+          ],
+          "lex_b": [
+            37,
+            65,
+            32,
+            60,
+            51,
+            25,
+            59,
+            39,
+            53,
+            68,
+            36,
+            42,
+            40,
+            35,
+            72,
+            28,
+            34,
+            31,
+            43,
+            70,
+            62,
+            55,
+            50,
+            57
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.1_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008026106855062049
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.1_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010514644187266432
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.1_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008257200985442935
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.1_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.1_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002250155126015971
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.1_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006737885630036903
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.1_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0007566768001383684
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.1_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010137864219860768
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.1_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009713419309751256
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.1_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.1_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0021531337828148067
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.1_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006055441193693267
+            }
+          }
+        },
+        "0.2": {
+          "lex_a": [
+            54,
+            65,
+            68,
+            32,
+            63,
+            51,
+            25,
+            67,
+            39,
+            49,
+            72,
+            66,
+            28,
+            42,
+            40,
+            46,
+            53,
+            27,
+            61,
+            34,
+            41,
+            64,
+            33,
+            38
+          ],
+          "lex_b": [
+            37,
+            65,
+            58,
+            30,
+            26,
+            60,
+            29,
+            45,
+            39,
+            69,
+            71,
+            36,
+            28,
+            42,
+            35,
+            52,
+            53,
+            48,
+            70,
+            59,
+            31,
+            43,
+            57,
+            62
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.2_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0007934313355468389
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.2_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010561621564579762
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.2_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008976089907443429
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.2_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.2_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002047115658211896
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.2_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006891419216403811
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.2_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0007988641581197423
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.2_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009989573026266624
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.2_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008268098779550687
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.2_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.2_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002026931038053017
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.2_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006756970849562818
+            }
+          }
+        },
+        "0.3": {
+          "lex_a": [
+            37,
+            53,
+            60,
+            56,
+            30,
+            48,
+            51,
+            52,
+            25,
+            26,
+            69,
+            71,
+            58,
+            45,
+            61,
+            68,
+            36,
+            28,
+            40,
+            29,
+            72,
+            59,
+            31,
+            43
+          ],
+          "lex_b": [
+            67,
+            53,
+            27,
+            49,
+            32,
+            50,
+            70,
+            65,
+            25,
+            64,
+            39,
+            54,
+            58,
+            45,
+            35,
+            68,
+            36,
+            42,
+            46,
+            63,
+            34,
+            41,
+            66,
+            43
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.3_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0007378322284991347
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.3_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009941112572752584
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.3_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008752698621411961
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.3_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.3_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002180664088782363
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.3_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0007157854911849254
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.3_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008264371142612668
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.3_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010177036674003902
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.3_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008581592224714324
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.3_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.3_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0021178959392187165
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.3_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006249585724252415
+            }
+          }
+        },
+        "0.4": {
+          "lex_a": [
+            50,
+            28,
+            72,
+            51,
+            30,
+            68,
+            47,
+            48,
+            70,
+            37,
+            27,
+            49,
+            67,
+            65,
+            39,
+            42,
+            56,
+            45,
+            35,
+            71,
+            60,
+            46,
+            66,
+            34
+          ],
+          "lex_b": [
+            63,
+            28,
+            58,
+            52,
+            32,
+            68,
+            53,
+            54,
+            70,
+            37,
+            25,
+            26,
+            67,
+            65,
+            40,
+            42,
+            56,
+            61,
+            35,
+            36,
+            55,
+            29,
+            44,
+            34
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.4_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008355557449220673
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.4_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010374317488332434
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.4_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008814967875405559
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.4_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.4_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0020971497682135873
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.4_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006070290728816836
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.4_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0007972842830372607
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.4_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010472458647930716
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.4_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008415478890336404
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.4_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.4_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002107281149841669
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.4_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006381682171596317
+            }
+          }
+        },
+        "0.5": {
+          "lex_a": [
+            54,
+            49,
+            58,
+            51,
+            48,
+            36,
+            52,
+            28,
+            32,
+            67,
+            70,
+            27,
+            50,
+            26,
+            69,
+            39,
+            40,
+            42,
+            45,
+            62,
+            35,
+            47,
+            55,
+            29
+          ],
+          "lex_b": [
+            53,
+            49,
+            60,
+            51,
+            65,
+            36,
+            56,
+            30,
+            32,
+            67,
+            37,
+            25,
+            50,
+            26,
+            66,
+            39,
+            40,
+            72,
+            45,
+            62,
+            38,
+            61,
+            46,
+            29
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.5_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008227936630173931
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.5_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010406933431550273
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.5_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008103501374327292
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.5_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.5_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002012745132596474
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.5_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006712694454380847
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.5_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0007934597298854918
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.5_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.001040525910422558
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.5_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009253756033153985
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.5_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.5_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0020236870435279184
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.5_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006695503559638196
+            }
+          }
+        },
+        "0.6": {
+          "lex_a": [
+            72,
+            61,
+            32,
+            62,
+            49,
+            48,
+            65,
+            58,
+            30,
+            36,
+            28,
+            51,
+            37,
+            27,
+            25,
+            26,
+            71,
+            68,
+            40,
+            42,
+            67,
+            56,
+            45,
+            47
+          ],
+          "lex_b": [
+            60,
+            61,
+            32,
+            62,
+            53,
+            48,
+            50,
+            38,
+            30,
+            36,
+            35,
+            54,
+            37,
+            27,
+            57,
+            26,
+            71,
+            39,
+            40,
+            42,
+            67,
+            69,
+            52,
+            47
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.6_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008286671844993051
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.6_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.001009825411744005
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.6_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008417426601169617
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.6_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.6_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002248291190214983
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.6_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006403607411647407
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.6_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0007655756093385652
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.6_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0011821082961840893
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.6_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008392504702402851
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.6_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.6_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0020356544359462466
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.6_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0007098809940608467
+            }
+          }
+        },
+        "0.7": {
+          "lex_a": [
+            53,
+            30,
+            67,
+            54,
+            65,
+            61,
+            62,
+            56,
+            28,
+            51,
+            57,
+            36,
+            32,
+            35,
+            40,
+            58,
+            37,
+            27,
+            42,
+            50,
+            26,
+            33,
+            71,
+            39
+          ],
+          "lex_b": [
+            72,
+            30,
+            67,
+            54,
+            65,
+            61,
+            43,
+            68,
+            28,
+            51,
+            57,
+            49,
+            32,
+            35,
+            48,
+            58,
+            37,
+            25,
+            42,
+            50,
+            26,
+            33,
+            70,
+            39
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.7_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008009155904214213
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.7_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009918657578821257
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.7_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009704529065785446
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.7_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.7_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0022028884080451303
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.7_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006754788474773797
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.7_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008740280791530459
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.7_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010011995167244138
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.7_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009241054846545843
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.7_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.7_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0020935995372261588
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.7_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006943449495345589
+            }
+          }
+        },
+        "0.8": {
+          "lex_a": [
+            54,
+            30,
+            68,
+            56,
+            66,
+            62,
+            48,
+            39,
+            28,
+            57,
+            58,
+            36,
+            51,
+            32,
+            35,
+            49,
+            72,
+            65,
+            27,
+            25,
+            42,
+            50,
+            26,
+            33
+          ],
+          "lex_b": [
+            61,
+            30,
+            68,
+            56,
+            66,
+            62,
+            43,
+            69,
+            28,
+            57,
+            58,
+            36,
+            51,
+            32,
+            40,
+            49,
+            72,
+            37,
+            27,
+            25,
+            42,
+            50,
+            26,
+            33
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.8_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0007793739672720902
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.8_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010122396345213643
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.8_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009574066466233862
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.8_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.8_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0022055171136780988
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.8_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006627618797182098
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.8_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008385623768558653
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.8_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.001016254500141294
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.8_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008087002151594387
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.8_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.8_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0021113727505751483
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.8_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006934647250363208
+            }
+          }
+        },
+        "0.9": {
+          "lex_a": [
+            57,
+            30,
+            59,
+            33,
+            70,
+            65,
+            51,
+            43,
+            39,
+            34,
+            56,
+            26,
+            61,
+            36,
+            58,
+            35,
+            40,
+            44,
+            63,
+            62,
+            69,
+            64,
+            37,
+            48
+          ],
+          "lex_b": [
+            49,
+            30,
+            59,
+            33,
+            70,
+            65,
+            51,
+            43,
+            39,
+            34,
+            56,
+            26,
+            61,
+            36,
+            32,
+            35,
+            40,
+            44,
+            63,
+            62,
+            69,
+            64,
+            37,
+            48
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.9_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008263012438308536
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.9_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010045654191745547
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.9_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.001047432891965851
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.9_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.9_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0023613804437982756
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.9_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0006909737671454122
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th0.9_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008492986634960325
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.9_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.000993611423049386
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th0.9_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008544686037724413
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th0.9_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th0.9_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0020842218962241347
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th0.9_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0008343958596544941
+            }
+          }
+        },
+        "1.0": {
+          "lex_a": [
+            30,
+            63,
+            54,
+            36,
+            29,
+            42,
+            62,
+            26,
+            43,
+            33,
+            59,
+            66,
+            57,
+            34,
+            39,
+            72,
+            61,
+            49,
+            32,
+            35,
+            40,
+            44,
+            56,
+            65
+          ],
+          "lex_b": [
+            30,
+            63,
+            54,
+            36,
+            29,
+            42,
+            62,
+            26,
+            43,
+            33,
+            59,
+            66,
+            57,
+            34,
+            39,
+            72,
+            61,
+            49,
+            32,
+            35,
+            40,
+            44,
+            56,
+            65
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th1.0_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0007542363536639477
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th1.0_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009940631511643177
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th1.0_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008871223278871671
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th1.0_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th1.0_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.001962528806033097
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th1.0_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.000718889508660384
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "long_phrase_th1.0_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0007632703879686791
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th1.0_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010126843227176215
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "long_phrase_th1.0_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008630963174376901
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "long_phrase_th1.0_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                96
+              ],
+              "file": "long_phrase_th1.0_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0020835390241127315
+            },
+            "embed.weight": {
+              "shape": [
+                96,
+                64
+              ],
+              "file": "long_phrase_th1.0_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0007241256241723308
+            }
+          }
+        }
+      }
+    },
+    "large_vocab": {
+      "label": "Larger vocabulary",
+      "blurb": "40 concepts instead of 24 \u2014 more to distinguish, same phrase length.",
+      "n_concepts": 40,
+      "phrase_len": 3,
+      "config": {
+        "n_layer": 4,
+        "n_embd": 64,
+        "n_head": 1,
+        "vocab_size": 128,
+        "n": 1024
+      },
+      "featured": {
+        "0.0": {
+          "lex_a": [
+            97,
+            83,
+            65,
+            109,
+            107,
+            116,
+            78,
+            42,
+            93,
+            104,
+            88,
+            119,
+            64,
+            51,
+            67,
+            96,
+            66,
+            41,
+            57,
+            69,
+            89,
+            81,
+            61,
+            63,
+            76,
+            62,
+            45,
+            47,
+            50,
+            113,
+            111,
+            99,
+            53,
+            77,
+            105,
+            86,
+            79,
+            103,
+            74,
+            94
+          ],
+          "lex_b": [
+            85,
+            91,
+            72,
+            52,
+            82,
+            49,
+            70,
+            55,
+            100,
+            59,
+            43,
+            115,
+            48,
+            101,
+            56,
+            112,
+            118,
+            44,
+            117,
+            120,
+            54,
+            80,
+            110,
+            95,
+            71,
+            84,
+            87,
+            60,
+            98,
+            114,
+            75,
+            73,
+            108,
+            58,
+            68,
+            102,
+            92,
+            106,
+            46,
+            90
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.0_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008176770501249419
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.0_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010764392342154435
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.0_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008505486010566471
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.0_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.0_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0024346507440401815
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.0_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0009736676267751559
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.0_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008910541224667407
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.0_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.001151211970434414
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.0_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009425506582410317
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.0_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.0_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002274919447936411
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.0_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0009940723030585942
+            }
+          }
+        },
+        "0.1": {
+          "lex_a": [
+            42,
+            82,
+            87,
+            78,
+            48,
+            52,
+            107,
+            49,
+            64,
+            60,
+            104,
+            117,
+            51,
+            43,
+            110,
+            75,
+            111,
+            55,
+            45,
+            56,
+            72,
+            66,
+            41,
+            44,
+            74,
+            69,
+            119,
+            54,
+            120,
+            114,
+            47,
+            71,
+            84,
+            98,
+            109,
+            59,
+            53,
+            77,
+            105,
+            86
+          ],
+          "lex_b": [
+            97,
+            65,
+            87,
+            93,
+            70,
+            67,
+            96,
+            91,
+            101,
+            116,
+            85,
+            115,
+            88,
+            108,
+            89,
+            118,
+            111,
+            113,
+            94,
+            100,
+            83,
+            46,
+            90,
+            57,
+            74,
+            99,
+            119,
+            81,
+            61,
+            63,
+            76,
+            62,
+            95,
+            50,
+            80,
+            73,
+            112,
+            58,
+            68,
+            102
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.1_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008493138579871711
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.1_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.001123111196390287
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.1_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009068626118457223
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.1_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.1_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0023404969943789985
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.1_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0009030236268606712
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.1_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008152016973870946
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.1_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0011747702369539756
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.1_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.000980204249930194
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.1_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.1_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002459792874929473
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.1_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.000828516412907698
+            }
+          }
+        },
+        "0.2": {
+          "lex_a": [
+            49,
+            70,
+            60,
+            52,
+            114,
+            96,
+            110,
+            100,
+            75,
+            120,
+            84,
+            119,
+            113,
+            90,
+            91,
+            94,
+            93,
+            106,
+            55,
+            45,
+            99,
+            62,
+            98,
+            97,
+            66,
+            46,
+            41,
+            95,
+            57,
+            69,
+            103,
+            81,
+            108,
+            61,
+            63,
+            76,
+            83,
+            112,
+            59,
+            73
+          ],
+          "lex_b": [
+            48,
+            85,
+            60,
+            67,
+            82,
+            87,
+            89,
+            42,
+            104,
+            78,
+            64,
+            65,
+            111,
+            92,
+            51,
+            43,
+            93,
+            79,
+            107,
+            45,
+            56,
+            72,
+            88,
+            116,
+            66,
+            46,
+            41,
+            44,
+            74,
+            71,
+            54,
+            81,
+            108,
+            117,
+            47,
+            101,
+            50,
+            80,
+            109,
+            53
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.2_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008410293403572923
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.2_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.001144340657812404
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.2_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008849075108062564
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.2_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.2_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002393242411726103
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.2_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0007854101695413665
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.2_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.000912452013943139
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.2_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0011659569627656711
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.2_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010304683306085782
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.2_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.2_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0023078458515677865
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.2_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0008191517957552211
+            }
+          }
+        },
+        "0.3": {
+          "lex_a": [
+            49,
+            70,
+            60,
+            52,
+            117,
+            100,
+            112,
+            120,
+            75,
+            47,
+            84,
+            88,
+            65,
+            114,
+            95,
+            51,
+            43,
+            104,
+            79,
+            55,
+            106,
+            103,
+            62,
+            102,
+            107,
+            108,
+            119,
+            66,
+            46,
+            41,
+            92,
+            44,
+            57,
+            74,
+            71,
+            54,
+            81,
+            61,
+            86,
+            101
+          ],
+          "lex_b": [
+            48,
+            85,
+            60,
+            67,
+            82,
+            89,
+            91,
+            42,
+            63,
+            78,
+            64,
+            88,
+            116,
+            93,
+            94,
+            97,
+            43,
+            113,
+            79,
+            55,
+            45,
+            56,
+            72,
+            90,
+            107,
+            108,
+            119,
+            87,
+            46,
+            98,
+            92,
+            44,
+            57,
+            69,
+            76,
+            99,
+            111,
+            96,
+            110,
+            83
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.3_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008480954240626238
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.3_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0011637839745348832
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.3_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009428417002122233
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.3_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.3_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002280958759503102
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.3_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0009382409373606284
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.3_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008685416358662402
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.3_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010750725513368141
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.3_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.000989816437556049
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.3_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.3_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0024280989263940045
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.3_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0007425543712818717
+            }
+          }
+        },
+        "0.4": {
+          "lex_a": [
+            49,
+            43,
+            99,
+            52,
+            82,
+            64,
+            118,
+            116,
+            70,
+            79,
+            65,
+            47,
+            85,
+            93,
+            63,
+            120,
+            100,
+            78,
+            98,
+            90,
+            105,
+            69,
+            113,
+            55,
+            110,
+            45,
+            61,
+            56,
+            72,
+            115,
+            107,
+            112,
+            91,
+            117,
+            94,
+            46,
+            76,
+            92,
+            57,
+            108
+          ],
+          "lex_b": [
+            48,
+            88,
+            99,
+            71,
+            82,
+            54,
+            118,
+            89,
+            42,
+            79,
+            60,
+            47,
+            51,
+            68,
+            106,
+            95,
+            100,
+            111,
+            98,
+            90,
+            103,
+            75,
+            84,
+            77,
+            110,
+            45,
+            61,
+            62,
+            72,
+            104,
+            107,
+            112,
+            91,
+            66,
+            87,
+            41,
+            76,
+            44,
+            74,
+            97
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.4_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0007884748221382382
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.4_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0011759502446557592
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.4_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008781865004479415
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.4_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.4_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0023519767550971562
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.4_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0008533472033936208
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.4_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.000795773399157787
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.4_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0012138851984279362
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.4_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008344706587904082
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.4_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.4_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002275808355001014
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.4_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0007879028287459546
+            }
+          }
+        },
+        "0.5": {
+          "lex_a": [
+            64,
+            52,
+            89,
+            54,
+            42,
+            79,
+            95,
+            57,
+            93,
+            82,
+            73,
+            88,
+            68,
+            107,
+            47,
+            51,
+            71,
+            63,
+            58,
+            78,
+            103,
+            84,
+            105,
+            75,
+            85,
+            55,
+            77,
+            111,
+            61,
+            56,
+            72,
+            117,
+            98,
+            108,
+            114,
+            110,
+            66,
+            94,
+            46,
+            113
+          ],
+          "lex_b": [
+            49,
+            48,
+            89,
+            54,
+            42,
+            106,
+            95,
+            104,
+            93,
+            82,
+            43,
+            88,
+            119,
+            60,
+            65,
+            100,
+            71,
+            70,
+            58,
+            78,
+            120,
+            90,
+            69,
+            115,
+            85,
+            55,
+            77,
+            45,
+            61,
+            62,
+            72,
+            117,
+            98,
+            108,
+            91,
+            110,
+            66,
+            87,
+            41,
+            76
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.5_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008450694910184605
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.5_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0011269257763239341
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.5_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009067394132689228
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.5_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.5_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0023396076179864837
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.5_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0008458385434676343
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.5_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008188830468598313
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.5_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0012074421475252767
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.5_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009071687896420636
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.5_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.5_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.00234552232299264
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.5_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0008386957833147425
+            }
+          }
+        },
+        "0.6": {
+          "lex_a": [
+            71,
+            78,
+            105,
+            65,
+            57,
+            109,
+            85,
+            95,
+            70,
+            92,
+            90,
+            68,
+            88,
+            84,
+            114,
+            76,
+            110,
+            117,
+            51,
+            58,
+            44,
+            59,
+            47,
+            99,
+            73,
+            89,
+            79,
+            46,
+            75,
+            120,
+            55,
+            77,
+            116,
+            45,
+            100,
+            103,
+            56,
+            62,
+            80,
+            113
+          ],
+          "lex_b": [
+            104,
+            49,
+            105,
+            65,
+            57,
+            64,
+            85,
+            54,
+            70,
+            92,
+            106,
+            68,
+            43,
+            82,
+            118,
+            108,
+            110,
+            117,
+            51,
+            58,
+            63,
+            60,
+            47,
+            99,
+            73,
+            89,
+            79,
+            69,
+            75,
+            98,
+            55,
+            77,
+            116,
+            45,
+            61,
+            103,
+            56,
+            72,
+            41,
+            113
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.6_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008183998737748214
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.6_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0011106144020876546
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.6_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008194442457101477
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.6_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.6_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002356070233142282
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.6_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0008216530788601853
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.6_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008192593305129704
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.6_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0012152143350736362
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.6_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010044710842643198
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.6_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.6_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0023562793187269075
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.6_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0007870495906026345
+            }
+          }
+        },
+        "0.7": {
+          "lex_a": [
+            54,
+            68,
+            49,
+            110,
+            105,
+            106,
+            89,
+            85,
+            104,
+            44,
+            79,
+            63,
+            78,
+            88,
+            71,
+            43,
+            84,
+            108,
+            82,
+            100,
+            66,
+            58,
+            113,
+            94,
+            109,
+            59,
+            60,
+            47,
+            73,
+            119,
+            46,
+            69,
+            75,
+            50,
+            95,
+            77,
+            117,
+            45,
+            103,
+            87
+          ],
+          "lex_b": [
+            64,
+            65,
+            49,
+            110,
+            105,
+            57,
+            89,
+            98,
+            104,
+            44,
+            79,
+            63,
+            51,
+            88,
+            71,
+            90,
+            84,
+            108,
+            82,
+            100,
+            76,
+            70,
+            113,
+            94,
+            109,
+            59,
+            60,
+            115,
+            73,
+            99,
+            46,
+            69,
+            75,
+            50,
+            55,
+            77,
+            117,
+            45,
+            61,
+            87
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.7_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0007822900775849349
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.7_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0011373340614198699
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.7_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008849024068652175
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.7_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.7_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0023508278403695172
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.7_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0008048073747965295
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.7_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0009205328432593759
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.7_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0012781988448045385
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.7_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008808187847062359
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.7_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.7_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002336631375034963
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.7_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0008587425383995837
+            }
+          }
+        },
+        "0.8": {
+          "lex_a": [
+            79,
+            58,
+            44,
+            85,
+            98,
+            112,
+            63,
+            71,
+            66,
+            103,
+            109,
+            64,
+            113,
+            57,
+            99,
+            70,
+            95,
+            49,
+            78,
+            105,
+            110,
+            117,
+            101,
+            93,
+            80,
+            114,
+            51,
+            65,
+            90,
+            118,
+            91,
+            62,
+            82,
+            116,
+            59,
+            60,
+            47,
+            106,
+            73,
+            89
+          ],
+          "lex_b": [
+            68,
+            58,
+            44,
+            85,
+            98,
+            112,
+            63,
+            71,
+            66,
+            103,
+            109,
+            64,
+            100,
+            57,
+            99,
+            43,
+            95,
+            49,
+            78,
+            105,
+            110,
+            84,
+            101,
+            93,
+            80,
+            114,
+            51,
+            88,
+            90,
+            54,
+            91,
+            62,
+            82,
+            116,
+            76,
+            60,
+            47,
+            106,
+            115,
+            89
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.8_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0010296926489026528
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.8_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010975706061040322
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.8_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009075916540904308
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.8_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.8_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0024174447134723814
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.8_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0007485960881541095
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.8_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008609197505815761
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.8_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010771433434148474
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.8_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009079027011638551
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.8_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.8_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0024435416919978583
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.8_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0008588609263652892
+            }
+          }
+        },
+        "0.9": {
+          "lex_a": [
+            109,
+            64,
+            84,
+            71,
+            57,
+            80,
+            44,
+            58,
+            103,
+            78,
+            51,
+            63,
+            113,
+            115,
+            66,
+            101,
+            45,
+            90,
+            43,
+            89,
+            108,
+            105,
+            112,
+            70,
+            120,
+            88,
+            81,
+            117,
+            91,
+            65,
+            96,
+            94,
+            85,
+            116,
+            79,
+            54,
+            95,
+            62,
+            86,
+            114
+          ],
+          "lex_b": [
+            68,
+            64,
+            84,
+            71,
+            57,
+            80,
+            44,
+            58,
+            103,
+            78,
+            51,
+            63,
+            100,
+            115,
+            66,
+            101,
+            45,
+            90,
+            43,
+            89,
+            108,
+            87,
+            112,
+            70,
+            120,
+            88,
+            81,
+            118,
+            91,
+            65,
+            96,
+            94,
+            85,
+            116,
+            79,
+            54,
+            95,
+            62,
+            86,
+            114
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.9_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008485432215562956
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.9_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010948172939105297
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.9_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009389019857241413
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.9_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.9_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002279863348157387
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.9_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0008763389324578713
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th0.9_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0009111797833067226
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.9_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0010738907836553618
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th0.9_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0009118096800301019
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th0.9_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th0.9_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.002316330361554003
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th0.9_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0008757280435149125
+            }
+          }
+        },
+        "1.0": {
+          "lex_a": [
+            89,
+            84,
+            77,
+            113,
+            70,
+            55,
+            95,
+            64,
+            94,
+            50,
+            51,
+            85,
+            44,
+            90,
+            67,
+            68,
+            57,
+            96,
+            58,
+            109,
+            105,
+            63,
+            45,
+            80,
+            66,
+            43,
+            117,
+            108,
+            87,
+            93,
+            116,
+            119,
+            53,
+            115,
+            81,
+            56,
+            98,
+            120,
+            99,
+            101
+          ],
+          "lex_b": [
+            89,
+            84,
+            77,
+            113,
+            70,
+            55,
+            95,
+            64,
+            94,
+            50,
+            51,
+            85,
+            44,
+            90,
+            67,
+            68,
+            57,
+            96,
+            58,
+            109,
+            105,
+            63,
+            45,
+            80,
+            66,
+            43,
+            117,
+            108,
+            87,
+            93,
+            116,
+            119,
+            53,
+            115,
+            81,
+            56,
+            98,
+            120,
+            99,
+            101
+          ],
+          "A": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th1.0_s0_A.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0007979262062883753
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th1.0_s0_A.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.001069943266590749
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th1.0_s0_A.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0008274972086816323
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th1.0_s0_A.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th1.0_s0_A.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.00237875754438986
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th1.0_s0_A.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0007866530085173179
+            }
+          },
+          "B": {
+            "decoder": {
+              "shape": [
+                1024,
+                64
+              ],
+              "file": "large_vocab_th1.0_s0_B.decoder.bin",
+              "concat_axis": 0,
+              "dtype": "int8",
+              "scale": 0.0008157924052298539
+            },
+            "encoder": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th1.0_s0_B.encoder.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.0013163505107399048
+            },
+            "encoder_v": {
+              "shape": [
+                1,
+                64,
+                1024
+              ],
+              "file": "large_vocab_th1.0_s0_B.encoder_v.bin",
+              "concat_axis": 2,
+              "dtype": "int8",
+              "scale": 0.000855131118785678
+            },
+            "attn.freqs": {
+              "shape": [
+                1,
+                1,
+                1,
+                1024
+              ],
+              "file": "large_vocab_th1.0_s0_B.freqs.bin",
+              "concat_axis": 3,
+              "dtype": "int8",
+              "scale": 0.0012531884777264332
+            },
+            "lm_head": {
+              "shape": [
+                64,
+                128
+              ],
+              "file": "large_vocab_th1.0_s0_B.lm_head.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.00244934469696105
+            },
+            "embed.weight": {
+              "shape": [
+                128,
+                64
+              ],
+              "file": "large_vocab_th1.0_s0_B.embed.bin",
+              "concat_axis": null,
+              "dtype": "int8",
+              "scale": 0.0007982881167742211
+            }
+          }
+        }
+      }
+    }
+  }
+}
