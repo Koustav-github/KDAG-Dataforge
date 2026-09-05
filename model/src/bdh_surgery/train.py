@@ -43,16 +43,36 @@ def evaluate(net: BDH, corpus: torch.Tensor) -> float:
     return loss.item()
 
 
-def train_base(seed: int, steps: int = 400) -> BDH:
-    """Theta-independent pivot-language base. Cloned by both parents."""
+def train_base(seed: int, steps: int = 400, spec=None) -> BDH:
+    """Theta-independent pivot-language base. Cloned by both parents.
+
+    `spec` is a DatasetSpec; None keeps the original baseline behaviour exactly,
+    which is what lets the already-trained baseline weights stay valid.
+    """
     torch.manual_seed(seed)
-    net = BDH(TOY)
-    train_model(net, make_pivot_corpus(TRAIN_SEQS, seed=seed), steps, 1e-3, seed)
+    if spec is None:
+        net = BDH(TOY)
+        corpus = make_pivot_corpus(TRAIN_SEQS, seed=seed)
+    else:
+        lay = spec.layout
+        net = BDH(spec.config())
+        corpus = make_pivot_corpus(TRAIN_SEQS, seed=seed, phrase_len=spec.phrase_len,
+                                   n_concepts=spec.n_concepts, pivot_base=lay["pivot_base"],
+                                   bos=lay["bos_a"], eos=lay["eos"])
+    train_model(net, corpus, steps, 1e-3, seed)
     return net
 
 
-def finetune(base: BDH, lex: list[int], bos: int, seed: int, steps: int = 600) -> BDH:
+def finetune(base: BDH, lex: list[int], bos: int, seed: int, steps: int = 600,
+             spec=None) -> BDH:
     """Clone the base and fine-tune on one translation direction."""
     net = copy.deepcopy(base)
-    train_model(net, make_corpus(lex, bos, TRAIN_SEQS, seed=seed), steps, 5e-4, seed)
+    if spec is None:
+        corpus = make_corpus(lex, bos, TRAIN_SEQS, seed=seed)
+    else:
+        lay = spec.layout
+        corpus = make_corpus(lex, bos, TRAIN_SEQS, seed=seed, phrase_len=spec.phrase_len,
+                             n_concepts=spec.n_concepts, pivot_base=lay["pivot_base"],
+                             sep=lay["sep"], eos=lay["eos"])
+    train_model(net, corpus, steps, 5e-4, seed)
     return net

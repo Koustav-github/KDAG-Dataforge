@@ -22,9 +22,17 @@ class Damage:
 
 
 def measure_damage(merged: BDH, parent_a: BDH, parent_b: BDH,
-                   lex_a: list[int], lex_b: list[int], seed: int) -> Damage:
-    eval_a = make_corpus(lex_a, BOS_A, EVAL_SEQS, seed=seed + 10_000)
-    eval_b = make_corpus(lex_b, BOS_B, EVAL_SEQS, seed=seed + 20_000)
+                   lex_a: list[int], lex_b: list[int], seed: int,
+                   spec=None) -> Damage:
+    if spec is None:
+        eval_a = make_corpus(lex_a, BOS_A, EVAL_SEQS, seed=seed + 10_000)
+        eval_b = make_corpus(lex_b, BOS_B, EVAL_SEQS, seed=seed + 20_000)
+    else:
+        lay = spec.layout
+        kw = dict(phrase_len=spec.phrase_len, n_concepts=spec.n_concepts,
+                  pivot_base=lay["pivot_base"], sep=lay["sep"], eos=lay["eos"])
+        eval_a = make_corpus(lex_a, lay["bos_a"], EVAL_SEQS, seed=seed + 10_000, **kw)
+        eval_b = make_corpus(lex_b, lay["bos_b"], EVAL_SEQS, seed=seed + 20_000, **kw)
     ma, mb = evaluate(merged, eval_a), evaluate(merged, eval_b)
     pa, pb = evaluate(parent_a, eval_a), evaluate(parent_b, eval_b)
     return Damage(ma - pa, mb - pb, ((ma - pa) + (mb - pb)) / 2, ma, mb, pa, pb)
