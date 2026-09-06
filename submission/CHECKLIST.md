@@ -1,6 +1,6 @@
 # Submission checklist — DataForge 2026, Pathway track
 
-Generated 2026-09-05 from the PS (`ps/Pathway PS_revised.pdf`, pp. 12-13).
+Generated 2026-09-07 from the PS (`ps/Pathway PS_revised.pdf`, pp. 12-13).
 `[x]` done · `[~]` partial, with the gap named · `[ ]` not done.
 
 ## Package requirements (PS p.12)

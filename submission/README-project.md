@@ -1,50 +1,106 @@
 # Model Surgery: fusing two BDH language models
 
-**Live artifact:** [bdh-merger.vercel.app](https://bdh-merger.vercel.app) (opens without sign-in)
+**Live artifact →  [bdh-merger.vercel.app](https://bdh-merger.vercel.app)**  (opens without sign-in)
 
-Team Invariance, IIT Kharagpur. Submission for the Pathway track: an interactive
-explainer connecting **model merging / composability in BDH** (arXiv:2509.26507 §7.1)
-to the concept of parametric memory in LLMs. See `ps/` (the two problem-statement PDFs)
-and `docs/` for the original design rationale.
+Team Invariance, IIT Kharagpur · DataForge 2026, Pathway track
+**Topic: Parametric Memory in LLMs** — where a model's learned knowledge lives, and
+whether it can be *composed* instead of retrained.
 
-The hypothesis this project tests, and both of its controls, come from the weight-space
+---
+
+## In one minute
+
+BDH ([arXiv:2509.26507](https://arxiv.org/abs/2509.26507)) keeps every parameter on one
+uniform neuron axis. That makes an operation available which no Transformer has: two
+trained models can be **concatenated** — their neuron populations laid side by side —
+rather than blended into one fixed-size set of weights. The BDH paper proposes this in
+§7.1, demonstrates it once, and leaves *why* and *when* it works untested.
+
+We turned that into a controlled experiment — **99 runs** (11 vocabulary-overlap levels ×
+3 seeds × 3 datasets) — and a browser artifact that runs the real forward pass, so a
+learner can drive every control themselves.
+
+| | Result |
+|---|---|
+| **We predicted:** damage tracks measured neuron overlap **M** | ❌ **Falsified** — M barely moves, and its correlation with damage flips sign when you stop averaging |
+| **We predicted:** damage localises to identifiable "collision" neurons | ❌ **Falsified** — ablating them never beats a size-matched random control |
+| **Control:** concatenation vs. weight-averaging | ✅ Concat wins **33/33 runs**, all 3 datasets, every θ |
+| **Discovered:** damage tracks vocabulary overlap **θ** | ✅ **r = −0.991** |
+
+**The sentence the artifact teaches:**
+
+> Merge damage in a pair of BDH models is strongly predictable — but from **θ**, how much
+> vocabulary the two parents share, **not** from the representational overlap the theory
+> points to.
+
+Both halves of our original hypothesis died. We report that, rather than swapping the
+axis and keeping the claim. The full evidence, including the retraction, is below.
+
+### Where to look
+
+| If you want… | Go to |
+|---|---|
+| The numbers and the falsification | [The claim](#the-claim) |
+| What we borrowed and what we overturned | [Related work](#related-work) |
+| Who this is for, and what it teaches | [Intended learner](#intended-learner-and-prerequisites) · [Learning objectives](#learning-objectives) |
+| How the artifact is built | [Artifact architecture](#artifact-architecture) · [Components](#role-of-every-major-component) |
+| What is live vs. precomputed | [Honesty table](#live--precomputed--synthetic--illustration) |
+| What we got wrong or never ran | [Known limitations](#known-limitations) |
+| Running it yourself | [How to reproduce](#how-to-reproduce) |
+
+The hypothesis tested here, and both of its controls, come from the weight-space
 model-merging literature outside BDH: task arithmetic (Ilharco et al. 2022,
 [arXiv:2212.04089](https://arxiv.org/abs/2212.04089)), the disentanglement claim we
 falsify (Ortiz-Jimenez et al. 2023,
 [arXiv:2305.12827](https://arxiv.org/abs/2305.12827)), the averaging result we invert
 (Wortsman et al. 2022, [arXiv:2203.05482](https://arxiv.org/abs/2203.05482)), and the
-interference-localization premise our Act 4 negative result speaks to (Yadav et al. 2023,
+interference-localisation premise our Act 4 result speaks to (Yadav et al. 2023,
 [arXiv:2306.01708](https://arxiv.org/abs/2306.01708)). Each is cited again beside the
-specific claim it supports below, and summarised as a table in
-[Related work](#related-work).
+claim it supports, and summarised in [Related work](#related-work).
+
+---
 
 ## The claim
 
 > Merge damage in a pair of BDH models is strongly predictable — but not from the thing
-> we set out to measure. It is predictable from **θ**, how much the two models' training
-> vocabularies overlap: `corr(θ, damage) = -0.991` across the 11 per-θ means (3 seeds
-> each), and `-0.790` across all 33 individual runs. Damage falls near-monotonically
-> from **+0.769** at θ = 0 to **+0.218** at θ = 1 (ten of the eleven steps fall;
-> θ = 0.2 → 0.3 rises slightly, 0.638 → 0.647). Our measured representational overlap
-> **M** — Hungarian-matched neuron activation correlation between the two parents —
-> stays almost flat over that whole range: **0.704 to 0.728** across the 11 per-θ means
-> (0.680 to 0.742 across all 33 runs), against a damage spread of 0.551 over the per-θ
-> means (0.849 across all 33 runs). And `corr(M, damage)` is **-0.608 over the 11 per-θ
-> means but +0.174 over all 33 individual runs — the sign flips when you stop
-> averaging.** That is what noise on a metric that barely moves looks like; it is not a
-> relationship. We ruled out a broken probe by re-probing each parent on its own target
-> direction instead of the shared pivot; it didn't help (M went 0.736 → 0.757, still
-> flat — see `model/scripts/probe_diagnostic.py`). **The probe was not the problem — the
-> metric does not capture what drives mergeability.**
+> we set out to measure. It is predictable from **θ**, how much vocabulary the two
+> parents share; **not** from **M**, our measured representational overlap.
 
-This is not the claim the project set out to test, and **neither half of the original
-hypothesis survived it.** We set out to show that mergeability is predictable *from
-measured neuron overlap*, and that collision damage *localizes to identifiable neurons*.
-The first half is falsified by our own data (above). The second half we had never
-actually measured until this review; when we did measure it (`model/scripts/measure_locality.py`,
-table below), ablating the collision set never recovered function, and at k = 100 it was
-significantly *worse* than ablating the same number of random neurons. **Both halves are
-unsupported by this experiment.**
+### The two numbers, side by side
+
+Both columns describe the same 33 baseline runs. Only the predictor changes.
+
+| | vs. **θ** (designed) | vs. **M** (measured) |
+|---|---|---|
+| correlation with damage, per-θ means | **−0.991** | −0.608 |
+| correlation with damage, all 33 runs | **−0.790** | **+0.174** ← sign flips |
+| how far the predictor itself moves | 0.0 → 1.0 (span **1.000**) | 0.704 → 0.728 (span **0.024**) |
+
+Damage falls near-monotonically from **+0.769** at θ = 0 to **+0.218** at θ = 1 — ten of
+the eleven steps fall (θ = 0.2 → 0.3 rises slightly, 0.638 → 0.647). Against that,
+M barely moves at all: **0.704–0.728** across the per-θ means (0.680–0.742 across all 33
+runs), while damage swings by 0.551 over those means and 0.849 over individual runs.
+
+**The sign flip is the finding.** `corr(M, damage)` is −0.608 if you average the seeds
+first and **+0.174** if you don't. A real relationship does not depend on how you group
+the points; that is what noise riding on a nearly-flat metric looks like.
+
+We ruled out a broken probe by re-probing each parent on its own target direction instead
+of the shared pivot. It didn't help — M went 0.736 → 0.757, still flat
+(`model/scripts/probe_diagnostic.py`). **The probe was not the problem; the metric does
+not capture what drives mergeability.**
+
+### What we set out to prove, and what happened
+
+| Pre-registered hypothesis | Outcome |
+|---|---|
+| Mergeability is predictable from measured neuron overlap | ❌ falsified by the table above |
+| Merge damage localises to identifiable "collision" neurons | ❌ falsified — see [the locality half](#the-locality-half-measured--and-retracted) |
+
+The second half we had never actually measured until a late review; when we did
+(`model/scripts/measure_locality.py`), ablating the collision set never recovered
+function, and at k = 100 it was significantly *worse* than ablating the same number of
+random neurons. **Both halves are unsupported by this experiment.**
 
 That is a real negative result about an open question, not a broken project. The
 averaging control and the θ relationship are genuine positive findings and they stand on
@@ -202,7 +258,7 @@ engage with the wider literature's disentanglement or interference-localization 
 ## Intended learner and prerequisites
 
 Aimed at someone who already knows roughly what a language model is and has heard of
-model merging (e.g. weight averaging, task vectors) but hasn't seen BDH (Baby Dragon
+model merging (e.g. weight averaging, task vectors) but hasn't seen BDH (Dragon
 Hatchling, arXiv:2509.26507) or thought about *why* an architecture's parameter layout
 determines which merge operations are even well-defined. No BDH-specific background is
 assumed — the artifact explains the neuron-axis idea from scratch — but basic familiarity
@@ -348,11 +404,14 @@ n = 1024 per parent, 2048 merged (under concat), sequence length 16, and the wor
    yet say whether representational overlap is genuinely non-predictive of
    mergeability, or whether the metric is mis-specified. The same caveat covers the
    collision score's failure — both metrics pool over the whole neuron axis.
-5. **The random-ablation control in the browser is a single draw.** `Surgery.svelte`
-   averages over 8 seeds and reports their spread; the offline
-   `model/scripts/measure_locality.py` uses 12. At k = 40 the collision-vs-random gap
-   is within that spread (SD ≈ 0.011–0.018), so only the k = 100 results separate from
-   chance.
+5. **The browser's random-ablation control uses only 5 draws.** `Surgery.svelte` runs
+   `N_RANDOM_DRAWS = 5` (seeds 7–11), averages them, and reports ±1 SD as the noise band;
+   8 draws blocked the main thread for ~3.5 s per change of k, so 5 is a deliberate
+   interactivity trade-off. The offline `model/scripts/measure_locality.py` uses 12.
+   A standard deviation estimated from 5 samples is itself noisy, so the band should be
+   read as indicative, not as a significance test. At k = 40 the collision result sits
+   *inside* the band (−0.53 SD from the random mean, SD ≈ 0.022); only at k = 100 does it
+   separate from chance (+1.90 SD) — and in the wrong direction, being worse than random.
 6. **No parameter-count control.** Comparing the merged 2n model against a single parent
    trained at 2n would rule out a pure size effect. It was planned, deferred, and never
    run; nothing in this repository claims otherwise.
@@ -417,7 +476,9 @@ all three datasets. `manifest.json` is schema v2: everything is nested under
   assistance (Claude), from a human-authored plan and specification, with every task
   reviewed. See `PROVENANCE.md`.
 - **This repository's licence**: see `LICENSE` (Apache License 2.0) at the repo root.
-- **Paper referenced**: arXiv:2509.26507, "Baby Dragon Hatchling" (Pathway), §7.1.
+- **Paper referenced**: arXiv:2509.26507, "The Dragon Hatchling: The Missing Link between
+  the Transformer and Models of the Brain" (Kosowski, Uznański, Chorowski, Stamirowska,
+  Bartoszkiewicz — Pathway), §7.1 for the merge rule.
 
 ## Layout
 

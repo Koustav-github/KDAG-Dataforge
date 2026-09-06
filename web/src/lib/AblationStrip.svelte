@@ -57,8 +57,11 @@
   const CHAR_W_BOLD = 7.05;    // the collision label is 700 weight
   const LABEL_PAD = 12;        // breathing room between the two boxes
 
-  $: randomText = ready ? `random avg ${f(mean)}` : '';
-  $: collisionText = ready ? `collision set ${f(collision)}` : '';
+  // Each label carries the unit, not just the number — these are losses (mean
+  // cross-entropy), and a bare "1.588" beside a dot could be read as a fraction,
+  // a correlation, or anything else.
+  $: randomText = ready ? `random avg · loss ${f(mean)}` : '';
+  $: collisionText = ready ? `collision set · loss ${f(collision)}` : '';
   $: randomHalf = (randomText.length * CHAR_W) / 2;
   $: collisionHalf = (collisionText.length * CHAR_W_BOLD) / 2;
 
@@ -133,8 +136,8 @@
       <!-- ── where we started ─────────────────────────────────────── -->
       <line x1={x(baseline)} y1={TRACK - 30} x2={x(baseline)} y2={AXIS}
             stroke={MUTED} stroke-width="1.5" stroke-dasharray="3 3" />
-      <text x={clamp(x(baseline), 52)} y={TRACK - 66} class="lbl muted" text-anchor="middle">
-        before ablation {f(baseline)}
+      <text x={clamp(x(baseline), 66)} y={TRACK - 66} class="lbl muted" text-anchor="middle">
+        before ablation · loss {f(baseline)}
       </text>
 
       <!-- ── the result under test ────────────────────────────────── -->
@@ -164,7 +167,9 @@
         <text x={x(t)} y={AXIS + 17} class="tick" text-anchor="middle">{t.toFixed(3)}</text>
       {/each}
       <text x={PADL} y={H - 6} class="tick" text-anchor="start">← lower loss is better</text>
-      <text x={W - PADR} y={H - 6} class="tick" text-anchor="end">mean cross-entropy</text>
+      <text x={W / 2} y={H - 6} class="axis-title" text-anchor="middle">
+        loss (mean cross-entropy, teacher-forced)
+      </text>
     </svg>
     </div>
 
@@ -218,6 +223,8 @@
   .zone { font-size: 11px; font-family: inherit; }
   .gap { font-size: 12px; font-weight: 700; fill: #1c1b19; font-family: inherit; }
   .tick { font-size: 10.5px; fill: var(--muted); font-family: inherit; }
+  /* names the quantity on the axis once, so no dot's number is unitless */
+  .axis-title { font-size: 10.5px; font-weight: 600; fill: #4a463f; font-family: inherit; }
   .read {
     margin: 0;
     font-size: 0.8rem;
