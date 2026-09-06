@@ -104,9 +104,13 @@
     // One parent's width: at rest, two parents plus a gap must fit the canvas.
     const unit = w / (2 + GAP);
 
-    // Where each parent's block sits once fused.
-    const ax = concat ? 0 : (w - unit) / 2;
-    const bx = concat ? unit : (w - unit) / 2;      // average: B sits ON A
+    // Where each parent's block sits once fused. Under concat the two blocks
+    // together are 2*unit wide, narrower than the canvas by design (GAP
+    // reserves breathing room) — center that pair rather than pinning it to
+    // the left edge, or the reserved space collects entirely on one side.
+    const pairOffset = (w - 2 * unit) / 2;
+    const ax = concat ? pairOffset : (w - unit) / 2;
+    const bx = concat ? pairOffset + unit : (w - unit) / 2;      // average: B sits ON A
 
     bars(ctx, magA, ax, unit, A_COLOR, 1);
     // Under average B is drawn at half weight over A — the visual analogue
@@ -141,8 +145,8 @@
       ctx.strokeStyle = '#1c1b19';
       ctx.setLineDash([3, 3]);
       ctx.beginPath();
-      ctx.moveTo(unit, 2);
-      ctx.lineTo(unit, BAR_H - 2);
+      ctx.moveTo(bx, 2);
+      ctx.lineTo(bx, BAR_H - 2);
       ctx.stroke();
       ctx.setLineDash([]);
     }
