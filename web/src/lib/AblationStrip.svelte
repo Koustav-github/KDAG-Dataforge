@@ -24,10 +24,11 @@
   const H = 240;
   const PADL = 30;
   const PADR = 30;
-  // Vertical bands, top to bottom, each with its own clearance so no two
-  // labels can ever land on each other or on the axis:
+  // Vertical bands, top to bottom. Rows are clear of each other and of the
+  // axis; the two labels that SHARE row 54 are kept apart horizontally by
+  // `labelX` below, since their values are usually close.
   //   30  baseline label
-  //   54  random / collision labels
+  //   54  random / collision labels (horizontally de-collided)
   //   96  the marks (band spans 66..126)
   //  140  gap-arrow label · 146 the arrow itself
   //  168  "what chance does" caption
@@ -46,6 +47,33 @@
   $: x = (v) => PADL + ((v - d0) / (d1 - d0)) * (W - PADL - PADR);
   // keep any label fully inside the frame
   $: clamp = (px, half) => Math.min(Math.max(px, PADL + half), W - PADR - half);
+
+  // The random-mean and collision labels share a row, and the whole point of
+  // the experiment is that their values sit close together — so by default they
+  // overlap exactly when the result is most interesting. Push the two text
+  // boxes apart horizontally when they would collide; the dots themselves stay
+  // at their true positions, only the captions move.
+  const CHAR_W = 6.6;          // 12.5px system sans, regular
+  const CHAR_W_BOLD = 7.05;    // the collision label is 700 weight
+  const LABEL_PAD = 12;        // breathing room between the two boxes
+
+  $: randomText = ready ? `random avg ${f(mean)}` : '';
+  $: collisionText = ready ? `collision set ${f(collision)}` : '';
+  $: randomHalf = (randomText.length * CHAR_W) / 2;
+  $: collisionHalf = (collisionText.length * CHAR_W_BOLD) / 2;
+
+  $: labelX = (() => {
+    if (!ready) return { random: 0, collision: 0 };
+    let rx = x(mean);
+    let cx = x(collision);
+    const need = randomHalf + collisionHalf + LABEL_PAD;
+    const have = Math.abs(cx - rx);
+    if (have < need) {
+      const push = (need - have) / 2;
+      if (cx >= rx) { rx -= push; cx += push; } else { rx += push; cx -= push; }
+    }
+    return { random: clamp(rx, randomHalf), collision: clamp(cx, collisionHalf) };
+  })();
 
   $: bandLo = ready && sd !== null ? mean - sd : null;
   $: bandHi = ready && sd !== null ? mean + sd : null;
@@ -98,8 +126,8 @@
               stroke={RANDOM} stroke-width="2" opacity="0.45" />
       {/each}
       <circle cx={x(mean)} cy={TRACK} r="5" fill={RANDOM} stroke="#f7f6f3" stroke-width="2" />
-      <text x={clamp(x(mean), 56)} y={TRACK - 42} class="lbl" text-anchor="middle" fill={RANDOM}>
-        random avg {f(mean)}
+      <text x={labelX.random} y={TRACK - 42} class="lbl" text-anchor="middle" fill={RANDOM}>
+        {randomText}
       </text>
 
       <!-- ── where we started ─────────────────────────────────────── -->
@@ -112,9 +140,9 @@
       <!-- ── the result under test ────────────────────────────────── -->
       <circle cx={x(collision)} cy={TRACK} r="8.5" fill={COLLISION}
               stroke="#f7f6f3" stroke-width="2.5" />
-      <text x={clamp(x(collision), 60)} y={TRACK - 42} class="lbl strong"
+      <text x={labelX.collision} y={TRACK - 42} class="lbl strong"
             text-anchor="middle" fill={COLLISION}>
-        collision set {f(collision)}
+        {collisionText}
       </text>
 
       <!-- ── the headline: how far from chance ────────────────────── -->
