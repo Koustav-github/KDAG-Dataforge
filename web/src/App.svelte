@@ -9,6 +9,7 @@
   import Derivation from './lib/Derivation.svelte';
   import FusionStrip from './lib/FusionStrip.svelte';
   import HonestyBadge from './lib/HonestyBadge.svelte';
+  import MergeContrast from './lib/MergeContrast.svelte';
   import { buildLexicon, labelSequence, splitProbe, layoutFor } from './lib/tokens.js';
   import { greedyDecode } from './lib/generate.js';
   import { commitDelayMs } from './lib/device.js';
@@ -314,6 +315,8 @@
   {/if}
 
   <Narrative />
+
+  <MergeContrast />
 
   <section>
     <div class="section-head">
