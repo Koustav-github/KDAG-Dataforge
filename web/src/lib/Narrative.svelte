@@ -124,12 +124,17 @@
             <span class="illustration-label">what θ means</span>
             <HonestyBadge kind="illustration" />
           </div>
-          <svg viewBox="0 0 220 90" role="img" aria-label="Schematic: two circles overlapping to represent shared vocabulary at a given θ">
-            <circle cx="85" cy="45" r="38" class="circ circ-a" />
-            <circle cx="135" cy="45" r="38" class="circ circ-b" />
-            <text x="55" y="49" class="circ-label">A only</text>
-            <text x="110" y="49" class="circ-label overlap-label">shared (θ)</text>
-            <text x="165" y="49" class="circ-label">B only</text>
+          <!-- Geometry note: each label is centred on the region it names, and the
+               regions have to be wide enough to hold it. Circles r=40 at cx=100/140
+               give a 40-unit lens (100..140) and 40-unit crescents (60..100,
+               140..180) — every label fits inside its own region with margin. -->
+          <svg viewBox="0 0 240 104" role="img" aria-label="Schematic: two overlapping circles. The left circle is concepts only language A names its own way, the right is concepts only B names its own way, and the overlap is the fraction θ of concepts both languages spell identically.">
+            <circle cx="100" cy="50" r="40" class="circ circ-a" />
+            <circle cx="140" cy="50" r="40" class="circ circ-b" />
+            <text x="80" y="55" class="circ-label">A only</text>
+            <text x="160" y="55" class="circ-label">B only</text>
+            <text x="120" y="47" class="circ-label overlap-label">shared</text>
+            <text x="120" y="63" class="circ-label overlap-theta">θ</text>
           </svg>
           <p class="illustration-caption">
             Schematic only — not measured data. θ = 0 pulls the circles apart entirely; θ = 1
@@ -227,7 +232,7 @@
     height: auto;
   }
   .circ {
-    fill-opacity: 0.35;
+    fill-opacity: 0.26;
     stroke-width: 1.5;
   }
   .circ-a {
@@ -239,12 +244,24 @@
     stroke: #a5453b;
   }
   .circ-label {
-    font-size: 8px;
+    font-size: 10px;
     fill: var(--fg);
     text-anchor: middle;
+    /* Halo in the panel's own background colour, so a label stays readable
+       where it sits over one or both translucent fills. paint-order puts the
+       stroke behind the glyphs instead of thickening them. */
+    paint-order: stroke;
+    stroke: #fbf6e6;
+    stroke-width: 3px;
+    stroke-linejoin: round;
   }
   .overlap-label {
-    font-weight: 600;
+    font-weight: 700;
+  }
+  .overlap-theta {
+    font-size: 12px;
+    font-weight: 700;
+    fill: #6b4fa8;
   }
   .illustration-caption {
     margin: 0;
