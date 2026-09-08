@@ -59,3 +59,6 @@ This codebase — the Python pipeline under `model/`, the JavaScript/Svelte fron
 documentation — was implemented with substantial AI assistance (Claude), working from a human-authored plan
 and specification (`ps/`, `docs/`). Every task was reviewed by the team before being accepted. This
 disclosure is made plainly per the project's evidence-discipline rules.
+
+## Team Invariance
+Team: Deep Pandey, Upayan Gupta, Tanishq Adhikari, Koustav Manna
